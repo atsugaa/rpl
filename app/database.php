@@ -213,8 +213,8 @@
 	    }
 	}
 
-	//edit detail produk berdasarkan id
-	function editProduct($post) {
+	//edit detail paket berdasarkan id
+	function editPaket($post) {
 		try {
 			$id = $post[0]['id'];
 			if (!empty($post[1]['gambar']['name'])) {
@@ -230,6 +230,30 @@
 	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
 	        $statement->bindValue(':img', $new);
 	        $statement->bindValue(':stock', $post[0]['kapasitas']);
+	        $statement->bindValue(':price', $post[0]['harga']);
+	        $statement->bindValue(':desk', $post[0]['deskripsi']);
+	        $statement->execute();
+	    } catch (PDOException $err) {
+	        echo $err->getMessage();
+	    }
+	}
+
+	//edit detail armada berdasarkan id
+	function editArmada($post) {
+		try {
+			$id = $post[0]['id'];
+			if (!empty($post[1]['gambar']['name'])) {
+				$img = $post[1]['gambar']['name'];
+				$tmp = $post[1]['gambar']['tmp_name'];
+				$dir = "../../../assets/img/armada/";
+				$new = $img;
+				move_uploaded_file($tmp, $dir . $new);
+			} else {
+				$new = $post[0]['old'];
+			}
+	        $statement = DB->prepare("UPDATE kendaraan SET NAMA_KENDARAAN = :name, GAMBAR_KENDARAAN = :img, HARGA_KENDARAAN = :price, DESKRIPSI_KENDARAAN = :desk WHERE ID_KENDARAAN = '$id'");
+	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
+	        $statement->bindValue(':img', $new);
 	        $statement->bindValue(':price', $post[0]['harga']);
 	        $statement->bindValue(':desk', $post[0]['deskripsi']);
 	        $statement->execute();

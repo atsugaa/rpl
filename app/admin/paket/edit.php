@@ -45,7 +45,7 @@
                             if ($errors) {
                                 include $inc;
                             } else {
-                                editProduct([$_POST, $_FILES]);
+                                editPaket([$_POST, $_FILES]);
                                 echo "<h1>Edit Paket berhasil !</h1>";
                                 header('location: index.php');
                             }

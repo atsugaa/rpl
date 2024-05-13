@@ -7,7 +7,7 @@
             <ul>
                 <li><a href="<?php echo BASEURL; ?>/app/admin/index.php">Dashboard</a></li>
                 <li><a href="<?php echo BASEURL; ?>/app/admin/transaksi/index.php">Pemesanan</a></li>
-                <li><a href="<?php echo BASEURL; ?>/app/armada/paket/index.php">Armada</a></li>
+                <li><a href="<?php echo BASEURL; ?>/app/admin/armada/index.php">Armada</a></li>
                 <li><a href="<?php echo BASEURL; ?>/app/admin/paket/index.php">Paket Wisata</a></li>
                 <li><a href="<?php echo BASEURL; ?>/app/admin/profile.php">Akun</a></li>
             </ul>
