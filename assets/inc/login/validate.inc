@@ -34,7 +34,7 @@
         } else {
             session_start();
             $_SESSION['id'] = $post['id'];
-            if (is_admin($post['id']) == 1) {
+            if (is_admin($post['id']) != NUll) {
                 $_SESSION['admin'] = true;
                 header("location: admin/index.php");
             } else {

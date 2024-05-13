@@ -34,7 +34,14 @@
                         <?= "Rp " . number_format($armada["HARGA_SEWA"], 0, ',', '.'); ?> per orang
                     </div>
                     <div class="productCardinfo">
-                        <span class="productCardinfo">Fasilitas : <?= $armada["DESKRIPSI_KENDARAAN"] ?></span>
+                        <ul>
+                            <?php
+                                $descs = explode(',', $armada["DESKRIPSI_KENDARAAN"]);
+                                foreach ($descs as $desc) {
+                                     echo "<li>$desc</li>";
+                                 } 
+                            ?>
+                        </ul>
                     </div>
                 </div>
                 <!-- Button trigger modal -->
@@ -48,7 +55,14 @@
                         <h4 class="modal-title" id="exampleModalLongTitle"><?= ucwords($armada["NAMA_KENDARAAN"]) ?></h5>
                       </div>
                       <div class="modal-body">
-                        <p><?= $armada["DESKRIPSI_KENDARAAN"] ?></p>
+                        <ul>
+                            <?php
+                                $descs = explode(',', $armada["DESKRIPSI_KENDARAAN"]);
+                                foreach ($descs as $desc) {
+                                     echo "<li>$desc</li>";
+                                 } 
+                            ?>
+                        </ul>
                         <p><?= $armada["HARGA_SEWA"] ?></p>
                       </div>
                       <div class="modal-footer">

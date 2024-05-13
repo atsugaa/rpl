@@ -220,17 +220,16 @@
 			if (!empty($post[1]['gambar']['name'])) {
 				$img = $post[1]['gambar']['name'];
 				$tmp = $post[1]['gambar']['tmp_name'];
-				$dir = "../../../assets/images/products/";
+				$dir = "../../../assets/img/paket/";
 				$new = $img;
 				move_uploaded_file($tmp, $dir . $new);
 			} else {
 				$new = $post[0]['old'];
 			}
-	        $statement = DB->prepare("UPDATE product SET BRAND_ID = :brand, PRODUCT_NAME = :name, PRODUCT_IMG = :img, PRODUCT_STOCK = :stock, PRODUCT_PRICE = :price, PRODUCT_DESC = :desk WHERE PRODUCT_ID = '$id'");
-	        $statement->bindValue(':brand', $post[0]['brand']);
+	        $statement = DB->prepare("UPDATE paket SET NAMA_PAKET = :name, GAMBAR_PAKET = :img, KAPASITAS_PAKET = :stock, HARGA_PAKET = :price, DESKRIPSI_PAKET = :desk WHERE ID_PAKET = '$id'");
 	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
 	        $statement->bindValue(':img', $new);
-	        $statement->bindValue(':stock', $post[0]['stock']);
+	        $statement->bindValue(':stock', $post[0]['kapasitas']);
 	        $statement->bindValue(':price', $post[0]['harga']);
 	        $statement->bindValue(':desk', $post[0]['deskripsi']);
 	        $statement->execute();
@@ -242,7 +241,7 @@
 	//hapus baris tertentu pada tabel berdasarkan id
 	function delete($kode, $table) {
 		try {
-			$statement = DB->prepare("DELETE FROM $table WHERE ".strtoupper($table)."_ID = :id");
+			$statement = DB->prepare("DELETE FROM $table WHERE ID_".strtoupper($table)." = :id");
 			$statement->bindValue(':id', $kode);
 			$statement->execute();
 		} catch (PDOException $err) {
