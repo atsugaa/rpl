@@ -12,13 +12,13 @@ Edit Paket ✔
 
 Hapus Paket ✔
 
-Lihat Armada 
+Lihat Armada ✔
 
 Tambah Armada 
 
-Edit Armada 
+Edit Armada ✔
 
-Hapus Armada
+Hapus Armada ✔
 
 Lihat Transaksi
 
