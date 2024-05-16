@@ -10,19 +10,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="<?= BASEURL ?>/dist/output.css" />
     <title>Home</title>
 </head>
 <body class="index-user">
-	<?php
+  <header>
+    <?php
 		include("../../../assets/inc/user/layouts/header.inc");
 		$flag = 1;
-	?>
-    <h1>HOME - PAKET</h1>
-	<div class="daftar">
+    ?>
+          <div
+          style="background-image:url(<?=BASEURL?>/img/5ce21808a9751d0fd0564f61814d36ba.jpg)"
+        class="w-full flex justify-center items-center h-[35vh] md:h-[40vh] lg:h-[47vh] bg-no-repeat bg-cover bg-center"
+      >
+        <div
+          class="flex flex-col justify-center gap-5 bg-black bg-opacity-30 w-full h-full px-32"
+        >
+          <h2 class="text-white font-bold text-2xl">Paket Wisata</h2>
+          <p class="text-white text-sm">
+            Taklukkan keindahan alam dan budaya yang luar biasa dengan <br />
+            paket wisata kami yang eksklusif, sebuah petualangan tak <br />
+            terlupakan menunggu Anda!
+          </p>
+        </div>
+      </div>
+  </header>
+  <main class="flex justify-center gap-11 flex-wrap items-center p-32 bg-slate-50">
     <?php foreach ($packets as $packet) : ?>
+      <div
+        class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm"
+      >
+        <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center">
+          <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none" />
+        </div>
+        <div class="flex justify-between items-center font-bold">
+          <h2 class="text-xl">  <?= ucwords($packet["NAMA_PAKET"]) ?></h2>
+          <h3><?= $packet["KAPASITAS_PAKET"] ?> Orang</h3>
+        </div>
+        <p class="text-gray-500">24 Jam</p>
+        <ul class="list-disc ml-6 text-gray-500">
+          <li><?= $packet["DESTINASI_PAKET"] ?></li>
+        </ul>
+        <p class="text-xs">
+          <span class="text-xl font-bold"><?= "Rp " . number_format($packet["HARGA_PAKET"], 0, ',', '.'); ?></span> per-orang
+        </p>
+        <a class="p-2 bg-blue-600 w-fit rounded-md text-white" href=""
+          >Lihat Selengkapnya</a
+        >
+      </div>
         <div class="productCardOuter">
             <div class="productCardInner">
                 <img class="img" src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket">
@@ -39,9 +75,8 @@
                         <span class="productCardinfo">Tujuan : <?= $packet["DESTINASI_PAKET"] ?></span>
                     </div>
                 </div>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $flag; ?>">Selengkapnya</button>
-                <!-- Modal -->
+
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $flag; ?>">Selengkapnya</button>
                 <div class="modal fade" id="modal<?php echo $flag; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -61,12 +96,12 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <?php $flag+=1;
     endforeach; ?>
-	</div>
+	</main>
 	<?php include("../../../assets/inc/user/layouts/footer.inc");?>
 </body>
 </html>

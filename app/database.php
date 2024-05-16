@@ -5,7 +5,7 @@
 			$statement = DB->prepare("SELECT IS_ADMIN FROM user where ID_USER = :id");
 			$statement->bindValue(':id',$id);
 			$statement->execute();
-			return $statement->fetchAll(PDO::FETCH_ASSOC);
+			return $statement->fetch(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $err){
 			echo $err->getMessage();

@@ -1,6 +1,6 @@
 # Admin
 
-Login ✔
+Login ✔ ~
 
 Edit Profil ✔
 
@@ -14,7 +14,7 @@ Hapus Paket ✔
 
 Lihat Armada ✔
 
-Tambah Armada 
+Tambah Armada
 
 Edit Armada ✔
 
@@ -26,15 +26,15 @@ Chart
 
 # User
 
-Login ✔
+Login ✔ ~
 
-Register ✔
+Register ✔ ~
 
 Edit Profil ✔
 
 Lihat Paket ✔
 
-Pesan Paket 
+Pesan Paket
 
 Lihat Armada ✔
 
