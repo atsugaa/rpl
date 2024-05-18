@@ -49,9 +49,14 @@
           <h3><?= $packet["KAPASITAS_PAKET"] ?> Orang</h3>
         </div>
         <p class="text-gray-500">24 Jam</p>
-        <ul class="list-disc ml-6 text-gray-500">
-          <li><?= $packet["DESTINASI_PAKET"] ?></li>
-        </ul>
+        <?php
+          $destinasis = explode(",", $packet["DESTINASI_PAKET"]);
+          foreach ($destinasis as $destinasi) { ?>
+            <ul class="list-disc ml-6 text-gray-500">
+              <li><?= $destinasi ?></li>
+            </ul>
+          <?php } ?>
+        
         <p class="text-xs">
           <span class="text-xl font-bold"><?= "Rp " . number_format($packet["HARGA_PAKET"], 0, ',', '.'); ?></span> per-orang
         </p>

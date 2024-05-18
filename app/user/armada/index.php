@@ -65,7 +65,7 @@
           >
             <div>
               <h2 class="text-2xl font-bold"> <?= ucwords($armada["NAMA_KENDARAAN"]) ?></h2>
-              <p><?= "Rp " . number_format($armada["HARGA_SEWA"], 0, ',', '.'); ?></p>
+              <p><?= "Rp " . number_format($armada["HARGA_KENDARAAN"], 0, ',', '.'); ?></p>
             </div>
             <a href="<?=BASEURL?>/app/user/armada/sewa.php?<?=$armada['ID_KENDARAAN']?>" class="bg-blue-600 py-2 px-3 rounded-xl text-white"
               >Pesan</a
