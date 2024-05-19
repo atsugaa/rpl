@@ -1,11 +1,110 @@
 <?php
+	//tambah paket
+	$connection = null;
+
+	function connectDatabase() {
+		global $connection;
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "rpl"; 
+
+		// connection
+		$connection = new mysqli($servername, $username, $password, $dbname);
+
+		// Check connection
+		if ($connection->connect_error) {
+			die("Connection failed: " . $connection->connect_error);
+		}
+	}
+
+	function executeQuery($sql) {
+		global $connection;
+		if (mysqli_query($connection, $sql)) {
+			return true;
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+			return false;
+		}
+	}
+
+	function tambahPaket($data) {
+		global $connection;
+		connectDatabase();
+
+		$id = generateId();
+		$nama = $data[0]['nama'];
+		$destinasi = $data[0]['destinasi'];
+		$harga = $data[0]['harga'];
+		$jemput = $data[0]['jemput'];
+		$kapasitas = $data[0]['kapasitas'];
+		$tanggal = $data[0]['tanggal'];
+		$deskripsi = $data[0]['deskripsi'];
+		$gambar = $data[1]['gambar'];
+
+		// Upload gambar
+		$target_dir = BASEPATH . "/assets/img/paket/";
+		$target_file = $target_dir . basename($gambar["name"]);
+
+		if (move_uploaded_file($gambar["tmp_name"], $target_file)) {
+			// Tambahkan data ke database
+			$sql = "INSERT INTO paket (ID_PAKET, NAMA_PAKET, DESTINASI_PAKET, HARGA_PAKET, JEMPUT_PAKET, KAPASITAS_PAKET, TANGGAL_PAKET, DESKRIPSI_PAKET, GAMBAR_PAKET) 
+					VALUES ('$id', '$nama', '$destinasi', '$harga', '$jemput', '$kapasitas', '$tanggal', '$deskripsi', '".$gambar["name"]."')";
+			
+			if (executeQuery($sql)) {
+				return true; // Berhasil
+			} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($connection); // Tampilkan error SQL
+			}
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+		}
+		return false;
+	}
+
+
+	function tambahArmada($data) {
+		global $connection;
+		connectDatabase();
+	
+		$id = generateId(); // Implementasikan fungsi ini untuk menghasilkan ID unik
+		$nama = $data[0]['nama'];
+		$harga = $data[0]['harga'];
+		$deskripsi = $data[0]['deskripsi'];
+		$gambar = $data[1]['gambar'];
+	
+		// Upload gambar
+		$target_dir = BASEPATH . "/assets/img/armada/";
+		$target_file = $target_dir . basename($gambar["name"]);
+	
+		if (move_uploaded_file($gambar["tmp_name"], $target_file)) {
+			// Tambahkan data ke database
+			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_KENDARAAN, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
+					VALUES ('$id', '$nama', '$harga', '$deskripsi', '".$gambar["name"]."')";
+			
+			if (executeQuery($sql)) {
+				return true; // Berhasil
+			} else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($connection); // Tampilkan error SQL
+			}
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+		}
+		return false;
+	}
+	
+
+	function generateId() {
+		return uniqid();
+	}
+
 	//admin/user
 	function is_admin($id) {
 		try{
 			$statement = DB->prepare("SELECT IS_ADMIN FROM user where ID_USER = :id");
 			$statement->bindValue(':id',$id);
 			$statement->execute();
-			return $statement->fetch(PDO::FETCH_ASSOC);
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $err){
 			echo $err->getMessage();
