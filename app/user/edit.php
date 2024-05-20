@@ -2,6 +2,7 @@
 	require_once('../base.php');
 	require_once('../database.php');
 	session_start();
+	$title = "Edit-profil";
 	if (!isset($_SESSION['user'])) {
 		header("Location: ../index.php");
 		exit();
@@ -13,13 +14,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
+	<link rel="stylesheet" href="<?= BASEURL ?>/dist/output.css">
 	<title>Edit - User</title>
 </head>
 <body>
 	<?php include("../../assets/inc/user/layouts/header.inc") ?>
-	<div class="content_edit">
-		<div class="form-container">
-			<h1>Edit Profil</h1>
+	<div class="flex my-20  justify-center items-center">
+		<div class="w-1/3 ">
+			<h1 class="font-bold text-xl mb-5">Edit Profil</h1>
 			<form action="edit.php" method="POST">
 				<?php
 					$table = 'user';

@@ -6,7 +6,7 @@ Edit Profil ✔
 
 Lihat Paket ✔
 
-Tambah Paket
+Tambah Paket ✔
 
 Edit Paket ✔
 
@@ -14,7 +14,7 @@ Hapus Paket ✔
 
 Lihat Armada ✔
 
-Tambah Armada
+Tambah Armada ✔
 
 Edit Armada ✔
 

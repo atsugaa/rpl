@@ -1,5 +1,6 @@
 <?php
 	session_start();
+    $title = "home";
     require('../base.php');
     require("../database.php");
 ?>

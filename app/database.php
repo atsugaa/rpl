@@ -79,7 +79,7 @@
 	
 		if (move_uploaded_file($gambar["tmp_name"], $target_file)) {
 			// Tambahkan data ke database
-			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_KENDARAAN, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
+			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_SEWA, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
 					VALUES ('$id', '$nama', '$harga', '$deskripsi', '".$gambar["name"]."')";
 			
 			if (executeQuery($sql)) {
@@ -105,6 +105,28 @@
 			$statement->bindValue(':id',$id);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+	function getKendaraanById($id) {
+		try{
+			$statement = DB->prepare("SELECT * FROM kendaraan where ID_KENDARAAN = :id");
+			$statement->bindValue(':id',$id);
+			$statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+	function getPaketById($id) {
+		try{
+			$statement = DB->prepare("SELECT * FROM paket where ID_PAKET = :id");
+			$statement->bindValue(':id',$id);
+			$statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
 		}
 		catch(PDOException $err){
 			echo $err->getMessage();

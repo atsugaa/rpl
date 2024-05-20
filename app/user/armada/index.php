@@ -4,6 +4,7 @@
         header("Location: ../index.php");
         exit();
     }
+    $title = "armada";
     require('../../base.php');
     require("../../database.php");
     $armadas = getTableData('kendaraan');
@@ -56,11 +57,11 @@
         </div>
     </header>
 	<main
-      class="flex gap-0 flex-wrap justify-center lg:justify-evenly gap-y-6 p-6 sm:p-9 md:p-28 bg-slate-50"
+      class="flex gap-0 flex-wrap justify-center lg:justify-evenly gap-y-20 p-6 sm:p-9 md:p-28 bg-slate-50"
     >
     <?php foreach ($armadas as $armada) : ?>
         <div
-        class="flex flex-col gap-5 p-4 rounded-xl w-10/12 bg-white drop-shadow-lg sm:w-96"
+        class="flex flex-col gap-5 p-4 rounded-xl w-10/12 bg-white drop-shadow-lg sm:w-[400px]"
       >
         <div class="flex flex-col md:flex-row md:items-center gap-6">
           <img src="<?= BASEURL; ?>/assets/img/armada/<?= $armada['GAMBAR_KENDARAAN'] ?>" class="wfull md:w-40" alt="" />
@@ -69,7 +70,7 @@
           >
             <div>
               <h2 class="text-2xl font-bold"> <?= ucwords($armada["NAMA_KENDARAAN"]) ?></h2>
-              <p><?= "Rp " . number_format($armada["HARGA_KENDARAAN"], 0, ',', '.'); ?></p>
+              <p><?= "Rp " . number_format($armada["HARGA_SEWA"], 0, ',', '.'); ?></p>
             </div>
             <a href="<?=BASEURL?>/app/user/armada/sewa.php?id=<?=$armada['ID_KENDARAAN']?>" class="bg-blue-600 py-2 px-3 rounded-xl text-white disabled"
                >Pesan</a
