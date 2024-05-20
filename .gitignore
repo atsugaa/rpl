@@ -6,3 +6,5 @@ tailwind.config.js
 paketWisata.html
 package.json
 src/
+app/base.php
+vendor/composer
