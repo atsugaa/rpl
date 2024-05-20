@@ -1,10 +1,1 @@
-node_modules/
-img/
-sewaArmada.html
-package-lock.json
-tailwind.config.js
-paketWisata.html
-package.json
-src/
-app/base.php
-vendor/composer
+/app/base.php
