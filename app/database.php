@@ -227,10 +227,10 @@
 	            $result = $stm->fetch();
 	            return $result[strtoupper($table)."_ID"];
 	        } else {
-	            if ($table == 'brand') {
-	                return 'B0000';
-	            } elseif ($table == 'product') {
-	                return 'P0000';
+	            if ($table == 'penyewaan') {
+	                return 'TS000000';
+	            } elseif ($table == 'pemesanan') {
+	                return 'TP000000';
 	            }
 	        }
 	    } catch (PDOException $err) {
@@ -240,10 +240,35 @@
 
 	//generate id varchar baru
 	function autoGenId($lastId) {
-	    $str = substr($lastId, 0, 1);
-	    $num = substr($lastId, 1, 4);
-	    $newNum = str_repeat("0", 4 - strlen(strval(intval($num) + 1))).strval(intval($num) + 1);
+	    $str = substr($lastId, 0, 2);
+	    $num = substr($lastId, 2, 7);
+	    $newNum = str_repeat("0", 7 - strlen(strval(intval($num) + 1))).strval(intval($num) + 1);
 	    return $str.$newNum;
+	}
+
+	//sewa kendaraan
+	function sewa($post, $user, $kendaraan) {
+		/*$lastId = getLastInsertedId('penyewaan');
+	    $newId = autoGenId($lastId);
+	    $armada = getAllData('kendaraan', $kendaraan);
+	    $date1 = new DateTime($post['start']);
+	    $date2 = new DateTime($post['end']);
+	    $interval = $date1->diff($date2);
+	    $int = intval($interval->days);*/
+		try {
+			$statement = DB->prepare("INSERT IGNORE INTO penyewaan (ID_PENYEWAAN, ID_KENDARAAN, ID_USER, TITIK_JEMPUT_PENYEWAAN, CATATAN_PENYEWAAN, DURASI_PENYEWAAN, TOTAL_HARGA, TANGGAL_PENYEWAAN) VALUES (:id, :kd,:us,:tj, :cp, :dp, :th, :tp");
+			$statement->bindValue(':id', $newId);
+			$statement->bindValue(':kd', htmlspecialchars($kendaraan));
+			$statement->bindValue(':us', htmlspecialchars($user));
+			$statement->bindValue(':tj', htmlspecialchars($post['titik']));
+			$statement->bindValue(':cp', htmlspecialchars($post['catatan']));
+			$statement->bindValue(':dp', $int);
+			$statement->bindValue(':th', $armada[0]['HARGA_KENDARAAN']*$int);
+			$statement->bindValue(':tp', htmlspecialchars($post['start']));
+			$statement->execute();
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
 	}
 
 	//tambah brand baru

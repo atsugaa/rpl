@@ -1,5 +1,5 @@
 <div class="form-field">
-    <label>ID :</label>
+    <label>Username :</label>
     <input type="text" name="id" id="id" value="<?php if (isset($_POST['id'])) {valinp($_POST, 'id');} ?>">
     <small> <?php if (isset($_POST['id'])) {errMsg($errors, $_POST, 'id');} ?> </small>
 </div>

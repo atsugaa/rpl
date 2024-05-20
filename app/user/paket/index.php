@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (!isset($_SESSION['user'])) {
+      header("Location: ../index.php");
+      exit();
+    }
     require('../../base.php');
     require("../../database.php");
     $packets = getTableData('paket');
@@ -64,7 +68,7 @@
           >Lihat Selengkapnya</a
         >
       </div>
-        <div class="productCardOuter">
+<!--         <div class="productCardOuter">
             <div class="productCardInner">
                 <img class="img" src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket">
                 <div class="productdetail">
@@ -81,7 +85,7 @@
                     </div>
                 </div>
 
-                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $flag; ?>">Selengkapnya</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal<?php echo $flag; ?>">Selengkapnya</button>
                 <div class="modal fade" id="modal<?php echo $flag; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -101,9 +105,9 @@
                       </div>
                     </div>
                   </div>
-                </div> -->
+                </div>
             </div>
-        </div>
+        </div> -->
         <?php $flag+=1;
     endforeach; ?>
 	</main>
