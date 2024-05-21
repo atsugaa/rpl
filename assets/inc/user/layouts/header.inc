@@ -41,7 +41,7 @@
         <li>
           <a
             href="<?php echo BASEURL; ?>/app/user/index.php"
-            class="block rounded <?= $title == "home" ?  "text-white md:text-black" : "text-gray-900 md:text-white"  ?> bg-blue-600 hover:bg-slate-300  md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
+            class="block rounded <?= $title == "home" ?  "text-white md:text-black bg-blue-600" : "text-gray-900 md:text-white"  ?> hover:bg-slate-300  md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
             aria-current="page"
             >Home</a
           >
@@ -49,14 +49,14 @@
         <li>
           <a
             href="<?php echo BASEURL; ?>/app/user/armada/index.php"
-            class="block <?= $title == "armada" ?  "text-white md:text-black" : "text-gray-900 md:text-white"  ?>  rounded hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
+            class="block rounded <?= $title == "armada" ?  "text-white md:text-black bg-blue-600" : "text-gray-900 md:text-white"  ?>  hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
             >Sewa Armada</a
           >
         </li>
         <li>
           <a
             href="<?php echo BASEURL; ?>/app/user/paket/index.php"
-            class="block <?= $title == "paket" ?  "text-white md:text-black" : "text-gray-900 md:text-white"  ?>  rounded hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
+            class="block rounded <?= $title == "paket" ?  "text-white md:text-black bg-blue-600" : "text-gray-900 md:text-white"  ?>  hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
             >Paket Wisata</a
           >
         </li>
@@ -64,7 +64,7 @@
         <li>
           <a
             href="<?php echo BASEURL; ?>/app/user/profile.php"
-            class="block <?= $title == "profil" ?  "text-white md:text-black" : "text-gray-900 md:text-white"  ?>  rounded hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
+            class="block rounded <?= $title == "profil" ?  "text-white md:text-black bg-blue-600" : "text-gray-900 md:text-white"  ?>  hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
             >Profil</a
           >
         </li>
@@ -72,7 +72,7 @@
         <li>
           <a
             href="<?php echo BASEURL; ?>/app/login.php"
-            class="block text-gray-900 rounded hover:bg-slate-300 md:text-white md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
+            class="block rounded <?= $title == "profil" ?  "text-white md:text-black bg-blue-600" : "text-gray-900 md:text-white"  ?>  hover:bg-slate-300 md:border-0 p-2 md:hover:bg-blue-500 hover:rounded-sm"
             >Login</a
           >
         </li>

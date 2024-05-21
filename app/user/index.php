@@ -155,6 +155,8 @@
       </section>
       <!-- ========================= END PENDAPAT ========================= -->
     </main>
+
 	<?php include("../../assets/inc/user/layouts/footer.inc");?>
+  <script src="<?=BASEURL?>/node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

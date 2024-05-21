@@ -25,7 +25,7 @@
 		$flag = 1;
     ?>
           <div
-          style="background-image:url(<?=BASEURL?>/img/5ce21808a9751d0fd0564f61814d36ba.jpg)"
+          style="background-image:url(<?=BASEURL?>/assets/img/5ce21808a9751d0fd0564f61814d36ba.jpg)"
         class="w-full flex justify-center items-center h-[35vh] md:h-[40vh] lg:h-[47vh] bg-no-repeat bg-cover bg-center"
       >
         <div
@@ -112,5 +112,6 @@
     endforeach; ?>
 	</main>
 	<?php include("../../../assets/inc/user/layouts/footer.inc");?>
+  <script src="<?=BASEURL?>/node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>

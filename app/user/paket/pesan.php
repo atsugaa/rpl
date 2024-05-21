@@ -24,7 +24,7 @@
         <h5 class="text-xl font-medium text-gray-900 text-center">
           From Reservasi
         </h5>
-        <form class="space-y-6" action="#">
+        <form class="space-y-6" action="pesan.php?id=<?=$_GET['id']?>" method="POST">
           <h2 class="text-2xl text-bold"><?= $paket['NAMA_PAKET']?></h2>
           <div>
             <label
