@@ -1,11 +1,12 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user'])) {
-		header("Location: ../index.php");
+		header("Location: ../../login.php");
 		exit();
 	}
     require('../../base.php');
     require("../../database.php");
+    $riwayats = getUserData('penyewaan', 'kendaraan', $_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,107 +26,48 @@
 				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 					<tr>
 						<th scope="col" class="px-6 py-3">
-							Product name
+							Tanggal Sewa
 						</th>
 						<th scope="col" class="px-6 py-3">
-							Color
+							Nama Kendaraan
 						</th>
 						<th scope="col" class="px-6 py-3">
-							Category
+							Durasi Sewa
 						</th>
 						<th scope="col" class="px-6 py-3">
-							Price
+							Total Harga
 						</th>
 						<th scope="col" class="px-6 py-3">
+							Titik Jemput
+						</th>
+						<th scope="col" class="px-6 py-3">
+							Aksi
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Apple MacBook Pro 17"
-						</th>
-						<td class="px-6 py-4">
-							Silver
-						</td>
-						<td class="px-6 py-4">
-							Laptop
-						</td>
-						<td class="px-6 py-4">
-							$2999
-						</td>
-						<td class="px-6 py-4">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-						</td>
-					</tr>
-					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Microsoft Surface Pro
-						</th>
-						<td class="px-6 py-4">
-							White
-						</td>
-						<td class="px-6 py-4">
-							Laptop PC
-						</td>
-						<td class="px-6 py-4">
-							$1999
-						</td>
-						<td class="px-6 py-4">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-						</td>
-					</tr>
-					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Magic Mouse 2
-						</th>
-						<td class="px-6 py-4">
-							Black
-						</td>
-						<td class="px-6 py-4">
-							Accessories
-						</td>
-						<td class="px-6 py-4">
-							$99
-						</td>
-						<td class="px-6 py-4">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-						</td>
-					</tr>
-					<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Google Pixel Phone
-						</th>
-						<td class="px-6 py-4">
-							Gray
-						</td>
-						<td class="px-6 py-4">
-							Phone
-						</td>
-						<td class="px-6 py-4">
-							$799
-						</td>
-						<td class="px-6 py-4">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-							Apple Watch 5
-						</th>
-						<td class="px-6 py-4">
-							Red
-						</td>
-						<td class="px-6 py-4">
-							Wearables
-						</td>
-						<td class="px-6 py-4">
-							$999
-						</td>
-						<td class="px-6 py-4">
-							<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
-						</td>
-					</tr>
+					<?php foreach ($riwayats as $riwayat) : ?>
+						<tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+								<?= $riwayat['TANGGAL_PENYEWAAN'] ?>
+							</th>
+							<td class="px-6 py-4">
+								<?= $riwayat['NAMA_KENDARAAN'] ?>
+							</td>
+							<td class="px-6 py-4">
+								<?= $riwayat['DURASI_PENYEWAAN'] ?> Hari
+							</td>
+							<td class="px-6 py-4">
+								<?= "Rp " . number_format($riwayat['TOTAL_HARGA'], 0, ',', '.'); ?>
+							</td>
+							<td class="px-6 py-4">
+								<?= $riwayat['TITIK_JEMPUT_PENYEWAAN'] ?>
+							</td>
+							<td class="px-6 py-4">
+								<a href="pembayaran.php?id=<?= $riwayat['ID_PENYEWAAN'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
+							</td>
+						</tr>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 		</div>	

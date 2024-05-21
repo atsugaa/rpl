@@ -1,6 +1,6 @@
 # Admin
 
-Login ✔ ~
+Login ✔
 
 Edit Profil ✔
 
@@ -26,20 +26,24 @@ Chart
 
 # User
 
-Login ✔ ~
+Login ✔ 
 
-Register ✔ ~
+Register ✔ 
 
 Edit Profil ✔
 
 Lihat Paket ✔
 
-Pesan Paket
+Pesan Paket ✔
 
 Lihat Armada ✔
 
-Sewa Armada
+Sewa Armada ✔
 
-Melakukan Pembayaran
+Melakukan Pembayaran Paket ✔
 
-Lihat Riwayat Transaksi
+Lihat Riwayat Transaksi Paket ✔
+
+Melakukan Pembayaran Armada ✔
+
+Lihat Riwayat Transaksi Armada ✔
