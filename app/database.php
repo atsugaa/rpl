@@ -270,15 +270,14 @@
 
 	//sewa kendaraan
 	function sewa($post, $user, $kendaraan) {
-		/*$lastId = getLastInsertedId('penyewaan');
+		$lastId = getLastInsertedId('penyewaan');
 	    $newId = autoGenId($lastId);
 	    $armada = getAllData('kendaraan', $kendaraan);
 	    $date1 = new DateTime($post['start']);
 	    $date2 = new DateTime($post['end']);
 	    $interval = $date1->diff($date2);
-	    $int = intval($interval->days);*/
-		try {
-			$statement = DB->prepare("INSERT IGNORE INTO penyewaan (ID_PENYEWAAN, ID_KENDARAAN, ID_USER, TITIK_JEMPUT_PENYEWAAN, CATATAN_PENYEWAAN, DURASI_PENYEWAAN, TOTAL_HARGA, TANGGAL_PENYEWAAN) VALUES (:id, :kd,:us,:tj, :cp, :dp, :th, :tp");
+	    $int = intval($interval->days);
+	    $statement = DB->prepare("INSERT IGNORE INTO penyewaan (ID_PENYEWAAN, ID_KENDARAAN, ID_USER, TITIK_JEMPUT_PENYEWAAN, CATATAN_PENYEWAAN, DURASI_PENYEWAAN, TOTAL_HARGA, TANGGAL_PENYEWAAN) VALUES (:id, :kd,:us,:tj, :cp, :dp, :th, :tp");
 			$statement->bindValue(':id', $newId);
 			$statement->bindValue(':kd', htmlspecialchars($kendaraan));
 			$statement->bindValue(':us', htmlspecialchars($user));
@@ -288,9 +287,11 @@
 			$statement->bindValue(':th', $armada[0]['HARGA_KENDARAAN']*$int);
 			$statement->bindValue(':tp', htmlspecialchars($post['start']));
 			$statement->execute();
+		/*try {
+			
 		} catch (PDOException $err) {
-			echo $err->getMessage();
-		}
+			dd($armada);
+		}*/
 	}
 
 	//tambah brand baru
