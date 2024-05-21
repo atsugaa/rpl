@@ -34,15 +34,15 @@ Edit Profil ✔
 
 Lihat Paket ✔
 
-Pesan Paket
+Pesan Paket ✔
 
 Lihat Armada ✔
 
 Sewa Armada ✔
 
-Melakukan Pembayaran Paket
+Melakukan Pembayaran Paket ✔
 
-Lihat Riwayat Transaksi Paket
+Lihat Riwayat Transaksi Paket ✔
 
 Melakukan Pembayaran Armada ✔
 
