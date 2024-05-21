@@ -11,7 +11,7 @@ if (!isset($_GET['id'])) {
 require_once("../../base.php");
 require_once("../../database.php");
 require_once(BASEPATH."/midtrans/midtrans-php/Midtrans.php");
-$bayar = getUserData('penyewaan', 'kendaraan', $_SESSION['id']);
+$bayar = getBayarData('penyewaan', 'kendaraan', $_SESSION['id'], $_GET['id']);
 $user = getAllData('user', $_SESSION['id']);
 
 
@@ -27,6 +27,7 @@ $user = getAllData('user', $_SESSION['id']);
 \Midtrans\Config::$is3ds = true;
 $params = array(
     'transaction_details' => array(
+        //ubahen order id ke $bayar[0]['ID_PENYEWAAN'] nk pengen podo kro db
         'order_id' => rand(),
         'gross_amount' => $bayar[0]['TOTAL_HARGA'],
     ),

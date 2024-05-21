@@ -214,9 +214,26 @@
 
 	//ambil data transaksi user
 	function getUserData($table, $table2, $id) {
+		$name = strtoupper($table2);
 		try{
-			$statement = DB->prepare("SELECT * FROM $table, $table2 where ID_USER = :id AND $table.ID_KENDARAAN = $table2.ID_KENDARAAN");
+			$statement = DB->prepare("SELECT * FROM $table, $table2 where ID_USER = :id AND $table.ID_$name = $table2.ID_$name");
 			$statement->bindValue(':id',$id);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+
+	//ambil data spesifik transaksi user
+	function getBayarData($table, $table2, $id, $byr) {
+		$name = strtoupper($table2);
+		$name2 = strtoupper($table);
+		try{
+			$statement = DB->prepare("SELECT * FROM $table, $table2 where ID_USER = :id and $table.ID_$name = $table2.ID_$name and ID_$name2 = :byr");
+			$statement->bindValue(':id',$id);
+			$statement->bindValue(':byr',$byr);
 			$statement->execute();
 			return $statement->fetchAll(PDO::FETCH_ASSOC);
 		}
@@ -300,6 +317,26 @@
 			$statement->bindValue(':dp', $int);
 			$statement->bindValue(':th', (intval($armada[0]['HARGA_KENDARAAN'])*$int));
 			$statement->bindValue(':tp', htmlspecialchars($post['start']));
+			$statement->execute();
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+
+	//pesan paket
+	function pesan($post, $user, $paket) {
+		$lastId = getLastInsertedId('pemesanan');
+	    $newId = autoGenId($lastId);
+	    $pakets = getAllData('paket', $paket);
+		try {
+			$statement = DB->prepare("INSERT IGNORE INTO pemesanan (ID_PEMESANAN, ID_PAKET, ID_USER, CATATAN_PESANAN, JUMLAH_PESANAN, TOTAL_HARGA, TITIK_JEMPUT_PEMESANAN) VALUES (:id, :pk,:us, :cp, :jp, :th, :tj)");
+			$statement->bindValue(':id', $newId);
+			$statement->bindValue(':pk', htmlspecialchars($paket));
+			$statement->bindValue(':us', htmlspecialchars($user));
+			$statement->bindValue(':tj', htmlspecialchars($post['titik']));
+			$statement->bindValue(':cp', htmlspecialchars($post['catatan']));
+			$statement->bindValue(':jp', htmlspecialchars(intval($post['jumlah'])));
+			$statement->bindValue(':th', (intval($pakets[0]['HARGA_PAKET'])*$post['jumlah']));
 			$statement->execute();
 		} catch (PDOException $err) {
 			echo $err->getMessage();
@@ -634,7 +671,7 @@
 		}
 	}
 
-	function Pesan($user){
+	function Pesan1($user){
 		try{ 
 			$a = [];
 			$products = getCartDetail($user);
