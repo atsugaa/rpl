@@ -212,6 +212,19 @@
 		}
 	}
 
+	//ambil data transaksi user
+	function getUserData($table, $table2, $id) {
+		try{
+			$statement = DB->prepare("SELECT * FROM $table, $table2 where ID_USER = :id AND $table.ID_KENDARAAN = $table2.ID_KENDARAAN");
+			$statement->bindValue(':id',$id);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+
 
 	//ambil seluruh data dari suatu tabel
 	function getTableData($table) {
@@ -242,12 +255,12 @@
     //ambil id terakhir yang ditambahkan
     function getLastInsertedId($table) {
 	    try {
-	        $sql = "SELECT * FROM $table ORDER BY ".strtoupper($table)."_ID DESC LIMIT 1";
+	        $sql = "SELECT * FROM $table ORDER BY ID_".strtoupper($table)." DESC LIMIT 1";
 	        $stm = DB->prepare($sql);
 	        $stm->execute();
 	        if ($stm->rowCount() > 0) {
 	            $result = $stm->fetch();
-	            return $result[strtoupper($table)."_ID"];
+	            return $result["ID_".strtoupper($table)];
 	        } else {
 	            if ($table == 'penyewaan') {
 	                return 'TS000000';
@@ -264,7 +277,7 @@
 	function autoGenId($lastId) {
 	    $str = substr($lastId, 0, 2);
 	    $num = substr($lastId, 2, 7);
-	    $newNum = str_repeat("0", 7 - strlen(strval(intval($num) + 1))).strval(intval($num) + 1);
+	    $newNum = str_repeat("0", 6 - strlen(strval(intval($num) + 1))).strval(intval($num) + 1);
 	    return $str.$newNum;
 	}
 
@@ -277,21 +290,20 @@
 	    $date2 = new DateTime($post['end']);
 	    $interval = $date1->diff($date2);
 	    $int = intval($interval->days);
-	    $statement = DB->prepare("INSERT IGNORE INTO penyewaan (ID_PENYEWAAN, ID_KENDARAAN, ID_USER, TITIK_JEMPUT_PENYEWAAN, CATATAN_PENYEWAAN, DURASI_PENYEWAAN, TOTAL_HARGA, TANGGAL_PENYEWAAN) VALUES (:id, :kd,:us,:tj, :cp, :dp, :th, :tp");
+		try {
+			$statement = DB->prepare("INSERT IGNORE INTO penyewaan (ID_PENYEWAAN, ID_KENDARAAN, ID_USER, TITIK_JEMPUT_PENYEWAAN, CATATAN_PENYEWAAN, DURASI_PENYEWAAN, TOTAL_HARGA, TANGGAL_PENYEWAAN) VALUES (:id, :kd,:us,:tj, :cp, :dp, :th, :tp)");
 			$statement->bindValue(':id', $newId);
 			$statement->bindValue(':kd', htmlspecialchars($kendaraan));
 			$statement->bindValue(':us', htmlspecialchars($user));
 			$statement->bindValue(':tj', htmlspecialchars($post['titik']));
 			$statement->bindValue(':cp', htmlspecialchars($post['catatan']));
 			$statement->bindValue(':dp', $int);
-			$statement->bindValue(':th', $armada[0]['HARGA_KENDARAAN']*$int);
+			$statement->bindValue(':th', (intval($armada[0]['HARGA_KENDARAAN'])*$int));
 			$statement->bindValue(':tp', htmlspecialchars($post['start']));
 			$statement->execute();
-		/*try {
-			
 		} catch (PDOException $err) {
-			dd($armada);
-		}*/
+			echo $err->getMessage();
+		}
 	}
 
 	//tambah brand baru

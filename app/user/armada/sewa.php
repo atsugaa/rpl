@@ -1,13 +1,13 @@
 <?php
     session_start();
     if (!isset($_SESSION['user'])) {
-        header("Location: ../../index.php");
+        header("Location: ../../login.php");
         exit();
     }
-    /*if (!isset($_GET['id'])) {
+    if (!isset($_GET['id'])) {
       header("Location: index.php");
       exit();
-    }*/
+    }
     require('../../base.php');
     require("../../database.php");
     if (isset($_GET['id'])) {
@@ -42,7 +42,7 @@
         <h5 class="text-xl font-medium text-gray-900 text-center">
           From Reservasi
         </h5>
-        <form class="space-y-6" action="sewa.php" id="form" method="POST">
+        <form class="space-y-6" action="" id="form" method="POST">
           <h2 class="text-2xl text-bold"><?= $kendaraan["NAMA_KENDARAAN"]; ?></h2>
           <input type="hidden" name="kendaraan" id="" value="<?= $kendaraan['NAMA_KENDARAAN']?>">
           <input type="hidden" name="id_kendaraan" id="" value="<?= $kendaraan['ID_KENDARAAN']?>">
@@ -53,8 +53,8 @@
           if (isset($_POST['submit'])) {
             var_dump($_POST);
             sewa($_POST, $id, $kendaraan['ID_KENDARAAN']);
-            /*header('Location: riwayat.php');
-            exit();*/
+            header('Location: riwayat.php');
+            exit();
           } else {
               include $inc;
           }
@@ -62,7 +62,7 @@
         </form>
       </div>
     </main>
-    <!-- <script>
+    <script>
       // For example trigger on button clicked, or any time you need
       var payButton = document.getElementById('pay-button');
       const form = document.querySelector('#form')
@@ -84,6 +84,6 @@
         }
         // customer will be redirected after completing payment pop-up
       });
-    </script> -->
+    </script>
   </body>
 </html>
