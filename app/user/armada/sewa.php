@@ -47,7 +47,7 @@
           $inc = BASEPATH.'/assets/inc/user/armada/sewa.php';
           if (isset($_POST['submit'])) {
             sewa($_POST, $id, $kendaraan['ID_KENDARAAN']);
-            header('Location: riwayat.php');
+            echo "<h6>pemesanan berhasil, silahkan lakukan pembayaran di menu riwayat pemesanan</h6>";
             exit();
           } else {
               include $inc;

@@ -1,3 +1,17 @@
+List kekurangan
+
+Admin
+Dashboard (Data belum dinamis, Grafik)
+Pemesanan/Transaksi (belum jalan, isinya kosong)
+Armada (Excel,ketika edit tidak ada value lama)
+Paket Wisata (Excel ketika edit tidak ada value lama)
+Profil (Edit)
+
+Customer
+Sewa armada (cek kendaraan belum jalan, sewa belum bisa)
+Pesan paket (pesan belum bisa)
+riwayat
+
 # Admin
 
 Login ✔
@@ -26,9 +40,9 @@ Chart
 
 # User
 
-Login ✔ 
+Login ✔
 
-Register ✔ 
+Register ✔
 
 Edit Profil ✔
 
