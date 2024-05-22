@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2024 at 10:36 AM
+-- Generation Time: May 22, 2024 at 09:34 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,19 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `kendaraan` (
   `ID_KENDARAAN` char(8) NOT NULL,
   `NAMA_KENDARAAN` varchar(64) NOT NULL,
-  `HARGA_SEWA` bigint(20) NOT NULL,
+  `HARGA_KENDARAAN` bigint(20) NOT NULL,
   `DESKRIPSI_KENDARAAN` varchar(256) NOT NULL,
-  `GAMBAR_KENDARAAN` varchar(256) NOT NULL
+  `GAMBAR_KENDARAAN` varchar(256) NOT NULL,
+  `STATUS_KENDARAAN` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kendaraan`
 --
 
-INSERT INTO `kendaraan` (`ID_KENDARAAN`, `NAMA_KENDARAAN`, `HARGA_SEWA`, `DESKRIPSI_KENDARAAN`, `GAMBAR_KENDARAAN`) VALUES
-('K0001', 'KUDA LUMPING', 230000, 'OKE, MANTAP, MANUK', 'test.jpg'),
-('K0002', 'KERETA JAWA', 290000, 'MANUK, MANTAP, MANUK', 'test2.jpg'),
-('K0003', 'BUS NEGRO', 300000, 'MANUK, MANUK, MANUK', 'test3.jpg');
+INSERT INTO `kendaraan` (`ID_KENDARAAN`, `NAMA_KENDARAAN`, `HARGA_KENDARAAN`, `DESKRIPSI_KENDARAAN`, `GAMBAR_KENDARAAN`, `STATUS_KENDARAAN`) VALUES
+('K0001', 'KUDA LUMPING', 230000, 'OKE, MANTAP, MANUK', 'test.jpg', 1),
+('K0002', 'KERETA JAWA', 290000, 'MANUK, MANTAP, MANUK', 'test2.jpg', 0),
+('K0003', 'BUS NEGRO', 300000, 'MANUK, MANUK, MANUK', '1684484016077.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -59,8 +60,17 @@ CREATE TABLE `paket` (
   `KAPASITAS_PAKET` int(11) NOT NULL,
   `TANGGAL_PAKET` datetime NOT NULL,
   `DESKRIPSI_PAKET` varchar(256) NOT NULL,
-  `GAMBAR_PAKET` longblob NOT NULL
+  `GAMBAR_PAKET` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `paket`
+--
+
+INSERT INTO `paket` (`ID_PAKET`, `NAMA_PAKET`, `DESTINASI_PAKET`, `HARGA_PAKET`, `JEMPUT_PAKET`, `KAPASITAS_PAKET`, `TANGGAL_PAKET`, `DESKRIPSI_PAKET`, `GAMBAR_PAKET`) VALUES
+('P0001', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-16 20:58:54', 'MANTAP', 'test.jpg'),
+('P0002', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-15 08:00:00', 'MANTAP', 'test2.jpg'),
+('P0003', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-18 21:00:00', 'MANTAP', '1683506901841.jpg');
 
 -- --------------------------------------------------------
 
@@ -74,8 +84,20 @@ CREATE TABLE `pemesanan` (
   `ID_USER` char(8) DEFAULT NULL,
   `CATATAN_PESANAN` varchar(256) DEFAULT NULL,
   `JUMLAH_PESANAN` int(11) NOT NULL,
-  `TOTAL_HARGA` bigint(20) NOT NULL
+  `TOTAL_HARGA` bigint(20) NOT NULL,
+  `TANGGAL_PEMESANAN` date NOT NULL DEFAULT current_timestamp(),
+  `TITIK_JEMPUT_PEMESANAN` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`ID_PEMESANAN`, `ID_PAKET`, `ID_USER`, `CATATAN_PESANAN`, `JUMLAH_PESANAN`, `TOTAL_HARGA`, `TANGGAL_PEMESANAN`, `TITIK_JEMPUT_PEMESANAN`) VALUES
+('TP000001', 'P0002', 'febrianu', 'okkk', 6, 2400000, '2024-05-21', 'LAMONGAN'),
+('TP000002', 'P0003', 'febrianu', 'okkkkkkkkkkkkkkkk', 2, 800000, '2024-05-21', ' MANTUP'),
+('TP000003', 'P0003', 'febrianu', 'uuuuuuuuuu', 1, 400000, '2024-05-21', 'LAMONGAN'),
+('TP000004', 'P0003', 'febrianu', 'jjjjjjjjjjj', 2, 800000, '2024-05-21', ' TIKUNG');
 
 -- --------------------------------------------------------
 
@@ -90,8 +112,16 @@ CREATE TABLE `penyewaan` (
   `TITIK_JEMPUT_PENYEWAAN` varchar(256) NOT NULL,
   `CATATAN_PENYEWAAN` varchar(256) DEFAULT NULL,
   `DURASI_PENYEWAAN` int(11) NOT NULL,
-  `TOTAL_HARGA` bigint(20) NOT NULL
+  `TOTAL_HARGA` bigint(20) NOT NULL,
+  `TANGGAL_PENYEWAAN` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penyewaan`
+--
+
+INSERT INTO `penyewaan` (`ID_PENYEWAAN`, `ID_KENDARAAN`, `ID_USER`, `TITIK_JEMPUT_PENYEWAAN`, `CATATAN_PENYEWAAN`, `DURASI_PENYEWAAN`, `TOTAL_HARGA`, `TANGGAL_PENYEWAAN`) VALUES
+('TS000001', 'K0001', 'febrianu', 'asrama', 'sssssss', 3, 690000, '2024-05-24');
 
 -- --------------------------------------------------------
 
@@ -113,6 +143,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID_USER`, `NAMA_USER`, `ALAMAT_USER`, `TELEPON_USER`, `PASSWORD_USER`, `IS_ADMIN`) VALUES
+('atsuga17', 'kntlo', 'Jotosanur', '089530456940', '4872129a12084829b5fb66ac1b350284f52dc3e75b39da6d8f973b2c0013246e', NULL),
 ('febrianu', 'febrianu', 'febrianu', '06969696969', '91e83d5263772b44b861d96d4c6821dd071152594d1f52e1029bb800757c066f', NULL),
 ('petarunx', 'Admin', 'Admin', '08945364829', '4872129a12084829b5fb66ac1b350284f52dc3e75b39da6d8f973b2c0013246e', 1);
 
