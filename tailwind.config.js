@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,js,php}",
-    "./**/*.{html,js,php}",
+    "./src/**/*.{html,js,php,inc}",
+    "./**/*.{html,js,php,inc}",
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
