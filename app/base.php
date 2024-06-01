@@ -1,6 +1,6 @@
 <?php
-	define("BASEURL", "http://localhost/rpl-main/rpl");
-	define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/rpl-main/rpl");
+	define("BASEURL", "http://localhost/rpl");
+	define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/rpl");
 	function connect($host, $db, $user, $password) {
 			$dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
 		try {

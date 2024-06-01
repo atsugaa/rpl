@@ -28,6 +28,16 @@
 		}
 	}
 
+	//update status bayar
+	function updateOrderStatus($id, $table) {
+		try {
+			$statement = DB->prepare("UPDATE $table SET STATUS_".strtoupper($table)." = 'SUDAH' WHERE ID_".strtoupper($table)." = '$id'");
+			$statement->execute();
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+
 	function tambahPaket($data) {
 		global $connection;
 		connectDatabase();

@@ -7,6 +7,9 @@
     require('../../base.php');
     require("../../database.php");
     $riwayats = getUserData('penyewaan', 'kendaraan', $_SESSION['id']);
+    if (isset($_POST['orderId'])) {
+	    updateOrderStatus($_POST['orderId'], 'penyewaan');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +44,9 @@
 							Titik Jemput
 						</th>
 						<th scope="col" class="px-6 py-3">
+							Status Bayar
+						</th>
+						<th scope="col" class="px-6 py-3">
 							Aksi
 						</th>
 					</tr>
@@ -62,6 +68,9 @@
 							</td>
 							<td class="px-6 py-4">
 								<?= $riwayat['TITIK_JEMPUT_PENYEWAAN'] ?>
+							</td>
+							<td class="px-6 py-4">
+								<?= $riwayat['STATUS_PENYEWAAN'] ?>
 							</td>
 							<td class="px-6 py-4">
 								<a href="pembayaran.php?id=<?= $riwayat['ID_PENYEWAAN'] ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a>
