@@ -14,19 +14,9 @@
         $id = $_POST['id'];
         $packet = getAllData('paket', $id);
         $old = $packet[0]["GAMBAR_PAKET"];
-    } else {
-        header("location: index.php");
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin - Edit Paket</title>
-    </head>
-    <body>
-        <?php include("../../../assets/inc/admin/layouts/header.php"); ?>
+        <?php require_once("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
                 <h1 class="text-xl font-bold mb-5">Edit Paket</h1>
                 <form action="edit.php" method="POST" enctype="multipart/form-data">
@@ -39,14 +29,15 @@
                         $inc = BASEPATH.'/assets/inc/admin/paket/paket.inc';
                         require  BASEPATH .'/assets/inc/admin/paket/validate.inc';
                         $errors = array();
+                        $table = 'paket';
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
                                 include $inc;
                             } else {
                                 editPaket([$_POST, $_FILES]);
-                                echo "<h1>Edit Paket berhasil !</h1>";
-                                header('location: index.php');
+                                // echo "<h1>Edit Paket berhasil !</h1>";
+                                header('Location: index.php');
                             }
                         } else {
                             include $inc;

@@ -53,7 +53,9 @@
 	<main
       class="flex gap-0 flex-wrap justify-center lg:justify-evenly gap-y-20 p-6 sm:p-9 md:p-28 bg-slate-50"
     >
-    <?php foreach ($armadas as $armada) : ?>
+    <?php foreach ($armadas as $armada) : 
+        checkArmadaStatus($armada);
+        ?>
         <div
         class="flex flex-col gap-5 p-4 rounded-xl w-10/12 bg-white drop-shadow-lg sm:w-[400px]"
       >
