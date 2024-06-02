@@ -48,7 +48,10 @@ $params = array(
     ),
 );
 
-$snapToken = \Midtrans\Snap::getSnapToken($params);
+if ($bayar[0]['STATUS_PENYEWAAN'] == 'BELUM') {
+    $snapToken = \Midtrans\Snap::getSnapToken($params);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +73,12 @@ $snapToken = \Midtrans\Snap::getSnapToken($params);
                         <li><?= $bayar[0]['NAMA_KENDARAAN'] ?> => <?= $bayar[0]['HARGA_KENDARAAN'] ?> per hari x <?= $bayar[0]['DURASI_PENYEWAAN'] ?> hari</li>
                     </ul>
                     <h4>Total: <?= "Rp " . number_format($bayar[0]['TOTAL_HARGA'], 0, ',', '.'); ?></h4>
-                    <button id="pay-button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Bayar</button>
+                    <?php
+                        if (isset($snapToken)) { ?>
+                            <button id="pay-button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Bayar</button>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -84,7 +92,21 @@ $snapToken = \Midtrans\Snap::getSnapToken($params);
                 snap.pay('<?php echo $snapToken?>', {
                     // Optional
                     onSuccess: function(result){
-                        /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                        var orderId = '<?php echo $bayar[0]['ID_PENYEWAAN']; ?>';
+                        $.ajax({
+                            type: 'POST',
+                            url: 'riwayat.php',
+                            data: { orderId: orderId },
+                            success: function(response) {
+                                // Handle success response
+                                console.log(response);
+                            },
+                            error: function(xhr, status, error) {
+                                // Handle error
+                                console.error(xhr.responseText);
+                            }
+                        });
+                        window.location.href = 'riwayat.php';
                     },
                     // Optional
                     onPending: function(result){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2024 at 09:34 AM
+-- Generation Time: Jun 01, 2024 at 06:24 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -86,18 +86,19 @@ CREATE TABLE `pemesanan` (
   `JUMLAH_PESANAN` int(11) NOT NULL,
   `TOTAL_HARGA` bigint(20) NOT NULL,
   `TANGGAL_PEMESANAN` date NOT NULL DEFAULT current_timestamp(),
-  `TITIK_JEMPUT_PEMESANAN` varchar(256) NOT NULL
+  `TITIK_JEMPUT_PEMESANAN` varchar(256) NOT NULL,
+  `STATUS_PEMESANAN` varchar(16) NOT NULL DEFAULT 'BELUM'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`ID_PEMESANAN`, `ID_PAKET`, `ID_USER`, `CATATAN_PESANAN`, `JUMLAH_PESANAN`, `TOTAL_HARGA`, `TANGGAL_PEMESANAN`, `TITIK_JEMPUT_PEMESANAN`) VALUES
-('TP000001', 'P0002', 'febrianu', 'okkk', 6, 2400000, '2024-05-21', 'LAMONGAN'),
-('TP000002', 'P0003', 'febrianu', 'okkkkkkkkkkkkkkkk', 2, 800000, '2024-05-21', ' MANTUP'),
-('TP000003', 'P0003', 'febrianu', 'uuuuuuuuuu', 1, 400000, '2024-05-21', 'LAMONGAN'),
-('TP000004', 'P0003', 'febrianu', 'jjjjjjjjjjj', 2, 800000, '2024-05-21', ' TIKUNG');
+INSERT INTO `pemesanan` (`ID_PEMESANAN`, `ID_PAKET`, `ID_USER`, `CATATAN_PESANAN`, `JUMLAH_PESANAN`, `TOTAL_HARGA`, `TANGGAL_PEMESANAN`, `TITIK_JEMPUT_PEMESANAN`, `STATUS_PEMESANAN`) VALUES
+('TP000001', 'P0002', 'febrianu', 'okkk', 6, 2400000, '2024-05-21', 'LAMONGAN', 'SUDAH'),
+('TP000002', 'P0003', 'febrianu', 'okkkkkkkkkkkkkkkk', 2, 800000, '2024-05-21', ' MANTUP', 'SUDAH'),
+('TP000003', 'P0003', 'febrianu', 'uuuuuuuuuu', 1, 400000, '2024-05-21', 'LAMONGAN', 'BELUM'),
+('TP000004', 'P0003', 'febrianu', 'jjjjjjjjjjj', 2, 800000, '2024-05-21', ' TIKUNG', 'SUDAH');
 
 -- --------------------------------------------------------
 
@@ -113,15 +114,16 @@ CREATE TABLE `penyewaan` (
   `CATATAN_PENYEWAAN` varchar(256) DEFAULT NULL,
   `DURASI_PENYEWAAN` int(11) NOT NULL,
   `TOTAL_HARGA` bigint(20) NOT NULL,
-  `TANGGAL_PENYEWAAN` date NOT NULL DEFAULT current_timestamp()
+  `TANGGAL_PENYEWAAN` date NOT NULL DEFAULT current_timestamp(),
+  `STATUS_PENYEWAAN` varchar(16) NOT NULL DEFAULT 'BELUM'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penyewaan`
 --
 
-INSERT INTO `penyewaan` (`ID_PENYEWAAN`, `ID_KENDARAAN`, `ID_USER`, `TITIK_JEMPUT_PENYEWAAN`, `CATATAN_PENYEWAAN`, `DURASI_PENYEWAAN`, `TOTAL_HARGA`, `TANGGAL_PENYEWAAN`) VALUES
-('TS000001', 'K0001', 'febrianu', 'asrama', 'sssssss', 3, 690000, '2024-05-24');
+INSERT INTO `penyewaan` (`ID_PENYEWAAN`, `ID_KENDARAAN`, `ID_USER`, `TITIK_JEMPUT_PENYEWAAN`, `CATATAN_PENYEWAAN`, `DURASI_PENYEWAAN`, `TOTAL_HARGA`, `TANGGAL_PENYEWAAN`, `STATUS_PENYEWAAN`) VALUES
+('TS000001', 'K0001', 'febrianu', 'asrama', 'sssssss', 3, 690000, '2024-05-24', 'SUDAH');
 
 -- --------------------------------------------------------
 
