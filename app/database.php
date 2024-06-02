@@ -104,6 +104,7 @@
 	}
 	
 
+
 	function generateId() {
 		return uniqid();
 	}
@@ -120,6 +121,17 @@
 			echo $err->getMessage();
 		}
 	}
+
+	function getPemesananByMonth(){
+		try {
+		   $statement = DB->prepare("SELECT MONTHNAME(TANGGAL_PEMESANAN) as bulan,sum(TOTAL_HARGA) as harga FROM pemesanan GROUP BY MONTHNAME(TANGGAL_PEMESANAN)");
+		   $statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+
 	function getJumlahPesanan($jenis=null){
 		try {
 			if($jenis=='selesai'){
@@ -133,6 +145,17 @@
 			echo $err->getMessage();
 		}
 	}
+
+	function getAllPemesanan(){
+		try {
+		   $statement = DB->prepare("SELECT * FROM pemesanan");
+		   $statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+
 	function getPendapatan(){
 		try {
 		   $statement = DB->prepare("SELECT sum(TOTAL_HARGA) as harga FROM pemesanan");

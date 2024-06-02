@@ -8,6 +8,7 @@
     require('../../base.php');
     require("../../database.php");
     include(BASEPATH."/assets/inc/admin/layouts/header.php");
+    $transactions = getAllPemesanan();
 ?>
     
 <div class="container mx-auto p-4">
@@ -36,65 +37,35 @@
                         <th class="p-3 text-sm font-semibold tracking-wide text-center w-32">Catatan</th>
                         <th class="p-3 text-sm font-semibold tracking-wide text-center">Pesanan</th>
                         <th class="p-3 text-sm font-semibold tracking-wide text-center">Total Harga</th>
+                        <th class="p-3 text-sm font-semibold tracking-wide text-center">Status</th>
                         <th class="p-3 text-sm font-semibold tracking-wide text-center">Tindakan</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
+                    <?php foreach($transactions as $transaction): ?>
                     <tr>
                         <td class="p-3 text-sm tracking-wide text-left">
                             <div class="flex items-center">
                                 <img class="rounded-full w-10 h-10" src="<?=BASEURL?>/assets/img/man.png" alt="icon man">
-                                <p class="ml-3">Kristin Watson</p>
+                                <p class="ml-3"><?= $transaction['ID_USER'] ?></p>
                             </div>
                         </td>
-                        <td class="p-3 text-sm tracking-wide text-left whitespace-nowrap">001</td>
-                        <td class="p-3 text-sm tracking-wide text-left">+62815-5490-6254</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Mojokerto</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Diskon Dong</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Elf</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Rp. 200.000</td>
+                        <td class="p-3 text-sm tracking-wide text-left whitespace-nowrap"><?= $transaction['ID_PEMESANAN']  ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['ID_PEMESANAN']  ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['TITIK_JEMPUT_PEMESANAN'] ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['CATATAN_PESANAN'] ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['ID_PAKET']  ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['TOTAL_HARGA'] ?></td>
+                        <td class="p-3 text-sm tracking-wide text-left"><?= $transaction['STATUS_PEMESANAN'] ?></td>
                         <td class="p-3 text-sm tracking-wide text-left">
                             <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
                         </td>
                     </tr>
-                    <tr class="bg-blue-50">
-                        <td class="p-3 text-sm tracking-wide text-left">
-                            <div class="flex items-center">
-                                <img class="rounded-full w-10 h-10" src="<?=BASEURL?>/assets/img/man.png" alt="icon man">
-                                <p class="ml-3">Kristin Watson</p>
-                            </div>
-                        </td>
-                        <td class="p-3 text-sm tracking-wide text-left whitespace-nowrap">001</td>
-                        <td class="p-3 text-sm tracking-wide text-left">+62815-5490-6254</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Mojokerto</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Diskon Dong</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Elf</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Rp. 200.000</td>
-                        <td class="p-3 text-sm tracking-wide text-left">
-                            <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 text-sm tracking-wide text-left">
-                            <div class="flex items-center">
-                                <img class="rounded-full w-10 h-10" src="<?=BASEURL?>/assets/img/man.png" alt="icon man">
-                                <p class="ml-3">Kristin Watson</p>
-                            </div>
-                        </td>
-                        <td class="p-3 text-sm tracking-wide text-left whitespace-nowrap">001</td>
-                        <td class="p-3 text-sm tracking-wide text-left">+62815-5490-6254</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Mojokerto</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Diskon Dong</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Elf</td>
-                        <td class="p-3 text-sm tracking-wide text-left">Rp. 200.000</td>
-                        <td class="p-3 text-sm tracking-wide text-left">
-                            <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</button>
-                        </td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<?php include(BASEPATH."/assets/inc/admin/layouts/footer.php");?>
+<?php include(BASEPATH."/assets/inc/admin/layouts/footer.php"); ?>
