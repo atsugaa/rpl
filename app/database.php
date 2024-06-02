@@ -120,6 +120,37 @@
 			echo $err->getMessage();
 		}
 	}
+	function getJumlahPesanan($jenis=null){
+		try {
+			if($jenis=='selesai'){
+				$statement = DB->prepare("SELECT count(*) as jml FROM pemesanan WHERE STATUS_PEMESANAN='SUDAH'");
+			}else{
+				$statement = DB->prepare("SELECT count(*) as jml FROM pemesanan");
+			}
+		   $statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+	function getPendapatan(){
+		try {
+		   $statement = DB->prepare("SELECT sum(TOTAL_HARGA) as harga FROM pemesanan");
+		   $statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
+	function getAllUsers(){
+		try {
+		   $statement = DB->prepare("SELECT count(*) as jumlah FROM user WHERE IS_ADMIN IS NULL");
+		   $statement->execute();
+			return $statement->fetch(PDO::FETCH_ASSOC);
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+	}
 	function getKendaraanById($id) {
 		try{
 			$statement = DB->prepare("SELECT * FROM kendaraan where ID_KENDARAAN = :id");
@@ -646,6 +677,7 @@
 		}
 	}
 	
+
 	function min_productincart($productid){
 		try{
 			$st = DB->prepare("UPDATE product SET PRODUCT_STOCK = PRODUCT_STOCK+1 WHERE PRODUCT_ID = :id");

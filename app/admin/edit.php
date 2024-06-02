@@ -6,17 +6,7 @@
 		header("Location: ../index.php");
 		exit();
 	}
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
-	<title>Edit - Admin</title>
-</head>
-<body>
-	<?php include("../../assets/inc/admin/layouts/header.inc") ?>
+	include(BASEPATH."/assets/inc/admin/layouts/header.php");?>
 	<div class="content_edit">
 		<div class="form-container">
 			<h1>Edit Profil</h1>
@@ -43,6 +33,6 @@
 			</form>
 		</div>
 	</div>
-	<?php include("../../assets/inc/admin/layouts/footer.inc");?>
+	<?php include("../../assets/inc/admin/layouts/footer.php");?>
 </body>
 </html>
