@@ -14,12 +14,14 @@
         $id = $_POST['id'];
         $packet = getAllData('paket', $id);
         $old = $packet[0]["GAMBAR_PAKET"];
+    } else {
+        header('Location: index.php');
     }
 ?>
         <?php require_once("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
                 <h1 class="text-xl font-bold mb-5">Edit Paket</h1>
-                <form action="edit.php" method="POST" enctype="multipart/form-data">
+                <form action="edit.php?pkt=<?= $packet[0]['ID_PAKET'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="mb-5 w-96 overflow-hidden">
                         <img src="<?= BASEURL; ?>/assets/img/paket/<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>" alt="packet">
                         <input type="hidden" name="old" value="<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>">
@@ -36,8 +38,8 @@
                                 include $inc;
                             } else {
                                 editPaket([$_POST, $_FILES]);
-                                // echo "<h1>Edit Paket berhasil !</h1>";
-                                header('Location: index.php');
+                                echo "<h1>Edit Paket berhasil !</h1>";
+                                include $inc;
                             }
                         } else {
                             include $inc;
