@@ -34,9 +34,9 @@ Edit Armada ✔
 
 Hapus Armada ✔
 
-Lihat Transaksi
+Lihat Transaksi 
 
-Chart
+Chart ✔
 
 # User
 
