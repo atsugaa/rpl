@@ -3,7 +3,7 @@ require("../database.php");
 connectDatabase();
 //header unduh file Excel
 header("Content-Type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=laporan_pemesanan.xls");
+header("Content-Disposition: attachment; filename=laporan_Dasboard_pemesanan.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 
