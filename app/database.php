@@ -486,12 +486,15 @@
 			} else {
 				$new = $post[0]['old'];
 			}
-	        $statement = DB->prepare("UPDATE paket SET NAMA_PAKET = :name, GAMBAR_PAKET = :img, KAPASITAS_PAKET = :stock, HARGA_PAKET = :price, DESKRIPSI_PAKET = :desk WHERE ID_PAKET = '$id'");
+	        $statement = DB->prepare("UPDATE paket SET NAMA_PAKET = :name, GAMBAR_PAKET = :img, KAPASITAS_PAKET = :stock, HARGA_PAKET = :price, DESKRIPSI_PAKET = :desk, DESTINASI_PAKET = :dest, JEMPUT_PAKET = :jemp, TANGGAL_PAKET = :tgl WHERE ID_PAKET = '$id'");
 	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
 	        $statement->bindValue(':img', $new);
-	        $statement->bindValue(':stock', $post[0]['kapasitas']);
-	        $statement->bindValue(':price', $post[0]['harga']);
-	        $statement->bindValue(':desk', $post[0]['deskripsi']);
+	        $statement->bindValue(':stock', htmlspecialchars($post[0]['kapasitas']));
+	        $statement->bindValue(':price', htmlspecialchars($post[0]['harga']));
+	        $statement->bindValue(':desk', htmlspecialchars($post[0]['deskripsi']));
+	        $statement->bindValue(':dest', htmlspecialchars($post[0]['destinasi']));
+	        $statement->bindValue(':jemp', htmlspecialchars($post[0]['jemput']));
+	        $statement->bindValue(':tgl', htmlspecialchars($post[0]['tanggal']));
 	        $statement->execute();
 	    } catch (PDOException $err) {
 	        echo $err->getMessage();

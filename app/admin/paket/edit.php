@@ -15,21 +15,13 @@
         $packet = getAllData('paket', $id);
         $old = $packet[0]["GAMBAR_PAKET"];
     } else {
-        header("location: index.php");
+        header('Location: index.php');
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin - Edit Paket</title>
-    </head>
-    <body>
-        <?php include("../../../assets/inc/admin/layouts/header.php"); ?>
+        <?php require_once("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
                 <h1 class="text-xl font-bold mb-5">Edit Paket</h1>
-                <form action="edit.php" method="POST" enctype="multipart/form-data">
+                <form action="edit.php?pkt=<?= $packet[0]['ID_PAKET'] ?>" method="POST" enctype="multipart/form-data">
                     <div class="mb-5 w-96 overflow-hidden">
                         <img src="<?= BASEURL; ?>/assets/img/paket/<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>" alt="packet">
                         <input type="hidden" name="old" value="<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>">
@@ -39,6 +31,7 @@
                         $inc = BASEPATH.'/assets/inc/admin/paket/paket.inc';
                         require  BASEPATH .'/assets/inc/admin/paket/validate.inc';
                         $errors = array();
+                        $table = 'paket';
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
@@ -46,7 +39,7 @@
                             } else {
                                 editPaket([$_POST, $_FILES]);
                                 echo "<h1>Edit Paket berhasil !</h1>";
-                                header('location: index.php');
+                                include $inc;
                             }
                         } else {
                             include $inc;

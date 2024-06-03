@@ -33,10 +33,10 @@
           <h3>Puma. Tour</h3>
         </div>
       </a>
-      <a href="">
+      <a href="https://wa.me/6288803528451?text=pesen%20kontol%20satu">
         <div class="flex gap-2 items-center">
           <img src="<?=BASEURL?>/assets/img/formkit_whatsapp.png" alt="" />
-          <h3>085553-535-353</h3>
+          <h3>088803528451</h3>
         </div>
       </a>
     </div>
