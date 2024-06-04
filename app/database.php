@@ -29,12 +29,20 @@
 	}
 
 	//update status bayar
-	function updateOrderStatus($id, $table) {
+	function updateOrderStatus($id, $id2, $qty, $table) {
 		try {
 			$statement = DB->prepare("UPDATE $table SET STATUS_".strtoupper($table)." = 'SUDAH' WHERE ID_".strtoupper($table)." = '$id'");
 			$statement->execute();
 		} catch (PDOException $err) {
 			echo $err->getMessage();
+		}
+		if ($table == 'pemesanan') {
+			try {
+				$statement = DB->prepare("UPDATE paket SET KAPASITAS_PAKET = KAPASITAS_PAKET - $qty WHERE ID_PAKET = '$id2'");
+				$statement->execute();
+			} catch (PDOException $err) {
+				echo $err->getMessage();
+			}
 		}
 	}
 
@@ -185,6 +193,62 @@
 			echo $err->getMessage();
 		}
 	}
+
+	function checkArmadaStatus($id) {
+		$now = new DateTime(date('Y-m-d H:i:s'));
+		$statement = DB->prepare("SELECT * FROM penyewaan");
+		$statement->execute();
+		foreach ($statement as $row) {
+			$sewa = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$end = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$end->modify("+".$row['DURASI_PENYEWAAN']." day");
+			if ($row['ID_KENDARAAN'] == $id && $row['STATUS_PENYEWAAN'] != 'EXPIRED') {
+				if ($now >= $sewa && $now <= $end) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	function setExpireStatus() {
+		$now = new DateTime(date('Y-m-d H:i:s'));
+		$sewas = getTableData('penyewaan');
+		foreach ($sewas as $sewa) {
+			if ($sewa['STATUS_PENYEWAAN'] == 'BELUM') {
+				$exp = new DateTime($sewa['TANGGAL_PENYEWAAN'].' 23:59:59');
+				$exp->modify('+1 day');
+				if ($now > $exp) {
+					try{
+						$statement = DB->prepare("UPDATE penyewaan SET STATUS_PENYEWAAN = 'EXPIRED' where ID_PENYEWAAN = :id");
+						$statement->bindValue(':id',$sewa['ID_PENYEWAAN']);
+						$statement->execute();
+					}
+					catch(PDOException $err){
+						echo $err->getMessage();
+					}
+				}
+			}
+		}
+		$pesans = getTableData('pemesanan');
+		foreach ($pesans as $pesan) {
+			if ($pesan['STATUS_PEMESANAN'] == 'BELUM') {
+				$exp = new DateTime($pesan['TANGGAL_PEMESANAN'].' 23:59:59');
+				$exp->modify('+1 day');
+				if ($now > $exp) {
+					try{
+						$statement = DB->prepare("UPDATE pemesanan SET STATUS_PEMESANAN = 'EXPIRED' where ID_PEMESANAN = :id");
+						$statement->bindValue(':id',$pesan['ID_PEMESANAN']);
+						$statement->execute();
+					}
+					catch(PDOException $err){
+						echo $err->getMessage();
+					}
+				}
+			}
+		}
+	}
+
 	function getPaketById($id) {
 		try{
 			$statement = DB->prepare("SELECT * FROM paket where ID_PAKET = :id");
@@ -944,4 +1008,6 @@
             echo $err->getMessage();
         }
 	}
+
+	setExpireStatus();
 ?>
