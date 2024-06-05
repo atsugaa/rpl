@@ -26,7 +26,7 @@
     name="nama"
     id="nama"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['nama'])) { valinp($_POST, 'nama'); } ?>"
+    value="<?php if (isset($_POST['nama'])) { valinp($_POST, 'nama'); }  else {echo show($table, 'nama', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['nama'])) { errMsg($errors, $_POST, 'nama'); } ?>
@@ -43,7 +43,7 @@
     name="destinasi"
     id="destinasi"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['destinasi'])) { valinp($_POST, 'destinasi'); } ?>"
+    value="<?php if (isset($_POST['destinasi'])) { valinp($_POST, 'destinasi'); }  else {echo show($table, 'destinasi', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['destinasi'])) { errMsg($errors, $_POST, 'destinasi'); } ?>
@@ -60,7 +60,7 @@
     name="harga"
     id="harga"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['harga'])) { valinp($_POST, 'harga'); } ?>"
+    value="<?php if (isset($_POST['harga'])) { valinp($_POST, 'harga'); }  else {echo show($table, 'harga', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['harga'])) { errMsg($errors, $_POST, 'harga'); } ?>
@@ -77,7 +77,7 @@
     name="jemput"
     id="jemput"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['jemput'])) { valinp($_POST, 'jemput'); } ?>"
+    value="<?php if (isset($_POST['jemput'])) { valinp($_POST, 'jemput'); }  else {echo show($table, 'jemput', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['jemput'])) { errMsg($errors, $_POST, 'jemput'); } ?>
@@ -94,7 +94,7 @@
     name="kapasitas"
     id="kapasitas"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['kapasitas'])) { valinp($_POST, 'kapasitas'); } ?>"
+    value="<?php if (isset($_POST['kapasitas'])) { valinp($_POST, 'kapasitas'); }  else {echo show($table, 'kapasitas', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['kapasitas'])) { errMsg($errors, $_POST, 'kapasitas'); } ?>
@@ -111,7 +111,7 @@
     name="tanggal"
     id="tanggal"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-    value="<?php if (isset($_POST['tanggal'])) { valinp($_POST, 'tanggal'); } ?>"
+    value="<?php if (isset($_POST['tanggal'])) { valinp($_POST, 'tanggal'); }  else {echo show($table, 'tanggal', $id);} ?>"
   />
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['tanggal'])) { errMsg($errors, $_POST, 'tanggal'); } ?>
@@ -128,7 +128,7 @@
     id="deskripsi"
     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
   >
-<?php if (isset($_POST['deskripsi'])) { valinp($_POST, 'deskripsi'); } ?></textarea
+<?php if (isset($_POST['deskripsi'])) { valinp($_POST, 'deskripsi'); }  else {echo show($table, 'deskripsi', $id);} ?></textarea
   >
   <small class="text-red-500 text-xs">
     <?php if (isset($_POST['deskripsi'])) { errMsg($errors, $_POST, 'deskripsi'); } ?>

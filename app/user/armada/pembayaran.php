@@ -48,7 +48,7 @@ $params = array(
     ),
 );
 
-if ($bayar[0]['STATUS_PENYEWAAN'] == 'BELUM') {
+if ($bayar[0]['STATUS_PENYEWAAN'] != 'SUDAH') {
     $snapToken = \Midtrans\Snap::getSnapToken($params);
 }
 
@@ -65,26 +65,62 @@ if ($bayar[0]['STATUS_PENYEWAAN'] == 'BELUM') {
     </head>
     <body>
         <?php include("../../../assets/inc/user/layouts/header.inc") ?>
-        <div class="flex my-20  justify-center items-center">
-            <div class="w-1/3 ">
-                <div class="mb-5">    
-                    <h3>Penyewaan:</h3>
-                    <ul>
-                        <li><?= $bayar[0]['NAMA_KENDARAAN'] ?> => <?= $bayar[0]['HARGA_KENDARAAN'] ?> per hari x <?= $bayar[0]['DURASI_PENYEWAAN'] ?> hari</li>
-                    </ul>
-                    <h4>Total: <?= "Rp " . number_format($bayar[0]['TOTAL_HARGA'], 0, ',', '.'); ?></h4>
-                    <?php
-                        if (isset($snapToken)) { ?>
-                            <button id="pay-button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Bayar</button>
-                    <?php
-                        }
-                    ?>
-                </div>
+        <main class="flex justify-center gap-11 flex-wrap items-center p-32 bg-slate-50">
+            <div class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm">
+                <?php if ($bayar[0]['STATUS_PENYEWAAN'] != 'SUDAH')  { ?>
+                    <h4 id="timer"></h4>
+                <?php } ?>
+                <h3>Penyewaan:</h3>
+                <ul>
+                    <li><?= $bayar[0]['NAMA_KENDARAAN'] ?> => <?= "Rp " . number_format($bayar[0]['HARGA_KENDARAAN'], 0, ',', '.'); ?> per hari x <?= $bayar[0]['DURASI_PENYEWAAN'] ?> hari</li>
+                </ul>
+                <h4>Total: <?= "Rp " . number_format($bayar[0]['TOTAL_HARGA'], 0, ',', '.'); ?></h4>
+                <?php
+                    if (isset($snapToken)) { ?>
+                        <button id="pay-button" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Bayar</button>
+                <?php
+                    } elseif ($bayar[0]['STATUS_PENYEWAAN'] == 'SUDAH') { ?>
+                        <button class="w-full text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>Pesanan Telah Dibayar</button>
+                <?php } else { ?>
+                        <button class="w-full text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" disabled>Pesanan Kadaluarsa</button>
+                <?php }
+                ?>
             </div>
-        </div>
+        </main>
         <?php include("../../../assets/inc/user/layouts/footer.inc");?>
 
         <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
+        <script>
+            // Set the date we're counting down to
+            var end = '<?php echo $bayar[0]['TANGGAL_PENYEWAAN']; ?>';
+            var countDownDate = new Date(end.concat(" ", "23:59:59")).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+              // Get today's date and time
+              var now = new Date().getTime();
+                
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+                
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+              // Output the result in an element with id="demo"
+              document.getElementById("timer").innerHTML = days + " Hari " + hours + " Jam "
+              + minutes + " Menit " + seconds + " Detik ";
+                
+              // If the count down is over, write some text 
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "";
+              }
+            }, 1000);
+        </script>
         <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-Tiayd_BugnMhbfYj"></script>
         <script type="text/javascript">
             document.getElementById('pay-button').onclick = function(){
@@ -93,10 +129,12 @@ if ($bayar[0]['STATUS_PENYEWAAN'] == 'BELUM') {
                     // Optional
                     onSuccess: function(result){
                         var orderId = '<?php echo $bayar[0]['ID_PENYEWAAN']; ?>';
+                        var armadaId = '<?php echo $bayar[0]['ID_KENDARAAN']; ?>';
+                        var qty = '<?php echo $bayar[0]['DURASI_PENYEWAAN']; ?>';
                         $.ajax({
                             type: 'POST',
                             url: 'riwayat.php',
-                            data: { orderId: orderId },
+                            data: { orderId: orderId, armadaId: armadaId, qty: qty },
                             success: function(response) {
                                 // Handle success response
                                 console.log(response);

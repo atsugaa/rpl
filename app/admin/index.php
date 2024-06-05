@@ -7,9 +7,20 @@
     $title = "Dashboard";
     require('../base.php');
     require("../database.php");
+
+    $incomes = getPemesananByMonth();
+    $arr = [ 'January','February','March','April','May','June','July','August','September','October',
+    'November','December'];
+    $temp = [];
+    foreach($arr as $i){
+        $temp[$i] = 0;
+    }
+    foreach($incomes as $i){
+        $temp[$i['bulan']] = $i['harga'];
+    }
+
 include(BASEPATH."/assets/inc/admin/layouts/header.php");
 ?>
-   
 <div class="flex justify-evenly flex-wrap col-gap-2">
         <div class="w-60 h-36 p-4 bg-blue-50 rounded mx-1 my-3">
             <svg class="flex-shrink-0 w-12 h-12  text-blue-400 transition duration-75 group-hover:text-black dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -41,9 +52,48 @@ include(BASEPATH."/assets/inc/admin/layouts/header.php");
         </div>
     </div>
     <div class="w-full  flex justify-center items-center flex-col p-12 gap-3">
-        <h3 class="font-bold text-2xl">Data History Pemesana Tahun 2024</h3>
-        <img class="h-[65vh]" src="https://www.jaspersoft.com/content/dam/jaspersoft/images/graphics/infographics/column-chart-example.svg" alt="">
-        <a href="" class="px-6 py-2 bg-blue-600 text-white rounded">Cetak</a>
+        <h3 class="font-bold text-2xl">Data History PemesanaN Tahun 2024</h3>
+        <!-- <img class="h-[65vh]" src="https://www.jaspersoft.com/content/dam/jaspersoft/images/graphics/infographics/column-chart-example.svg" alt=""> -->
+        <!-- <a href="excel.php" class="px-6 py-2 bg-blue-600 text-white rounded">Cetak</a> -->
+
+        <div class="w-full">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <!-- cetak excel -->
+        <a href="excel.php" class="px-6 py-2 bg-blue-600 text-white rounded">Cetak</a>
     </div>
-    <?php include(BASEPATH."/assets/inc/admin/layouts/footer.php");
-?>
+    <?php include(BASEPATH."/assets/inc/admin/layouts/footer.php");?>
+
+    <!-- end container-kanan -->
+    <script src="<?= BASEURL ?>/node_modules/chart.js/dist/chart.umd.js"></script>
+    <script>
+        let label = [];
+        let datas = [];
+        <?php foreach ($temp as $tmp => $v ): ?>
+            label.push("<?= $tmp ?>");
+            datas.push(<?= $v ?>);
+        <?php endforeach; ?>
+        const chart = document.getElementById('myChart');
+        const data = {
+            labels : label,
+            datasets: [{
+                label: 'Pendapatan per bulan',
+                data: datas,
+                backgroundColor: [
+                'rgb(45, 212, 191)'
+                ],
+                borderColor: [
+                'rgb(37, 99, 235)',
+                ],
+                borderWidth: 1,
+                hoverOffset: 4
+            }]
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+        };
+        new Chart(chart, config);
+    </script>
+    

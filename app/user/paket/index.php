@@ -50,7 +50,7 @@
         </div>
         <div class="flex justify-between items-center font-bold">
           <h2 class="text-xl">  <?= ucwords($packet["NAMA_PAKET"]) ?></h2>
-          <h3><?= $packet["KAPASITAS_PAKET"] ?> Orang</h3>
+          <h3>Sisa <?= $packet["KAPASITAS_PAKET"] ?> Orang</h3>
         </div>
         <p class="text-gray-500">24 Jam</p>
         <?php

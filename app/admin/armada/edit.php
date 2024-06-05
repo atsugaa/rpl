@@ -39,6 +39,7 @@
                         $inc = BASEPATH.'/assets/inc/admin/armada/armada.inc';
                         require  BASEPATH .'/assets/inc/admin/armada/validate.inc';
                         $errors = array();
+                        $table = 'kendaraan';
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
@@ -46,7 +47,7 @@
                             } else {
                                 editArmada([$_POST, $_FILES]);
                                 echo "<h1>Edit armada berhasil !</h1>";
-                                header('location: index.php');
+                                include $inc;
                             }
                         } else {
                             include $inc;
