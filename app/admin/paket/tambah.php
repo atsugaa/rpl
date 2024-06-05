@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="text-xl font-bold mb-5">Tambah Paket</h1>
             <form action="tambah.php" method="POST" enctype="multipart/form-data">
                 <?php
-                $inc = BASEPATH . '/assets/inc/admin/paket/paket.inc';
+                $inc = BASEPATH . '/assets/inc/admin/paket/add.inc';
                 include $inc;
                 ?>
                 <div class="form-field">
