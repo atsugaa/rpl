@@ -1,20 +1,13 @@
 <?php
     require_once('../../base.php');
     require_once('../../database.php');
+    $title = 'Tambah Armada';
     session_start();
     if (!isset($_SESSION['admin'])) {
         header("Location: ../index.php");
         exit();
     }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin - Tambah Armada</title>
-    </head>
-    <body>
         <?php include("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
                 <h1 class="text-xl font-bold mb-5">Tambah Armada</h1>
@@ -23,6 +16,7 @@
                         $inc = BASEPATH . '/assets/inc/admin/armada/armada.inc';
                         require BASEPATH . '/assets/inc/admin/armada/validate.inc';
                         $errors = array();
+                        $table = 'kendaraan';
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
@@ -46,5 +40,3 @@
                 </form>
             </div>
         <?php include("../../../assets/inc/admin/layouts/footer.php"); ?>
-    </body>
-</html>

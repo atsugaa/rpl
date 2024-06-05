@@ -1,5 +1,5 @@
 <?php
-	define("BASEURL", "http://localhost/rpl");
+	define("BASEURL", "http://localhost:8080/rpl");
 	define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/rpl");
 	function connect($host, $db, $user, $password) {
 			$dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
@@ -10,5 +10,5 @@
 			die($e->getMessage());
 		}
 	}
-	return define("DB", connect('localhost', 'rpl', 'root', ''));
+	return define("DB", connect('localhost', 'rpl2', 'root', ''));
 ?>

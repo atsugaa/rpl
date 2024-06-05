@@ -1,5 +1,6 @@
 <?php
 	//tambah paket
+
 	$connection = null;
 
 	function connectDatabase() {
@@ -7,7 +8,7 @@
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
-		$dbname = "rpl"; 
+		$dbname = "rpl2"; 
 
 		// connection
 		$connection = new mysqli($servername, $username, $password, $dbname);
@@ -929,10 +930,10 @@
 
 
 	// --------------------------------------CHECKOUT-----------------------------------------------
-	function checkout($id){
-		$order_detail = getOrderDetailData($id);
-		$products = getProductfromID($order_detail["PRODUCT_ID"]);
-	}
+	// function checkout($id){
+	// 	$order_detail = getOrderDetailData($id);
+	// 	$products = getProductfromID($order_detail["PRODUCT_ID"]);
+	// }
 
 
 	//---------------------------------------BELUM DIBAYAR - SUDAH DIBAYAR -----------------------------------

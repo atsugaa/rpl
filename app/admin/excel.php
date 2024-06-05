@@ -1,4 +1,5 @@
 <?php
+require_once('../base.php');
 require("../database.php");
 connectDatabase();
 //header unduh file Excel
