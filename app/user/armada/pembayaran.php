@@ -130,10 +130,11 @@ if ($bayar[0]['STATUS_PENYEWAAN'] != 'SUDAH') {
                     onSuccess: function(result){
                         var orderId = '<?php echo $bayar[0]['ID_PENYEWAAN']; ?>';
                         var armadaId = '<?php echo $bayar[0]['ID_KENDARAAN']; ?>';
+                        var qty = '<?php echo $bayar[0]['DURASI_PENYEWAAN']; ?>';
                         $.ajax({
                             type: 'POST',
                             url: 'riwayat.php',
-                            data: { orderId: orderId, armadaId: armadaId },
+                            data: { orderId: orderId, armadaId: armadaId, qty: qty },
                             success: function(response) {
                                 // Handle success response
                                 console.log(response);

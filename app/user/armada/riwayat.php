@@ -8,7 +8,7 @@
     require("../../database.php");
     $riwayats = getUserData('penyewaan', 'kendaraan', $_SESSION['id']);
     if (isset($_POST['orderId'])) {
-	    updateOrderStatus($_POST['orderId'], $_POST['armadaId'], 'penyewaan');
+	    updateOrderStatus($_POST['orderId'], $_POST['armadaId'], $_POST['qyy'], 'penyewaan');
 	}
 ?>
 <!DOCTYPE html>
