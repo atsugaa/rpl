@@ -221,7 +221,7 @@
 			$selesai = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
 			$selesai->modify("+".$row['DURASI_PENYEWAAN']." day");
 			if ($row['ID_KENDARAAN'] == $id && $row['STATUS_PENYEWAAN'] != 'EXPIRED') {
-				if ($start <= $selesai || $end >= $sewa) {
+				if ($end >= $sewa && $start <= $selesai) {
 					return false;
 				}
 			}
