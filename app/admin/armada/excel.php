@@ -1,5 +1,6 @@
 <?php
 require("../../database.php");
+require("../../base.php");
 connectDatabase();
 //header unduh file Excel
 header("Content-Type: application/vnd.ms-excel");

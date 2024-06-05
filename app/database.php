@@ -97,7 +97,7 @@
 	
 		if (move_uploaded_file($gambar["tmp_name"], $target_file)) {
 			// Tambahkan data ke database
-			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_SEWA, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
+			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_KENDARAAN, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
 					VALUES ('$id', '$nama', '$harga', '$deskripsi', '".$gambar["name"]."')";
 			
 			if (executeQuery($sql)) {
