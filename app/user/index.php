@@ -118,37 +118,33 @@
           <div
             class="w-40 h-48 lg:w-52 lg:h-64 rounded-md text-center py-5 px-3 bg-white drop-shadow-lg"
           >
-            <h2 class="font-bold mb-3">Ibu May</h2>
+            <h2 class="font-bold mb-3">Moh. Kurnia Agusta</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. A,
-              quasi.
+              "Destinasi yang ditawarkan sangatlah indah, bikin keluarga sangat senang ketika diajak berwisata, pokonya sangat recomended"
             </p>
           </div>
           <div
             class="w-40 h-48 lg:w-52 lg:h-64 rounded-md text-center py-5 px-3 bg-white drop-shadow-lg"
           >
-            <h2 class="font-bold mb-3">Ibu May</h2>
+            <h2 class="font-bold mb-3">Nadfhif Fajrul Minan</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. A,
-              quasi.
+              "Pilihan metode pembayaran yang sangat beragam membuat saya dapat lebih mudah melakukan pembayaran"
             </p>
           </div>
           <div
             class="w-40 h-48 lg:w-52 lg:h-64 rounded-md text-center py-5 px-3 bg-white drop-shadow-lg"
           >
-            <h2 class="font-bold mb-3">Ibu May</h2>
+            <h2 class="font-bold mb-3">Suhartono</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. A,
-              quasi.
+              "Pilihan transportasi wisata yang sangat lengkap dan fasilitas yang sangat lengkap, selain itu sopirnya sangat ramah"
             </p>
           </div>
           <div
             class="w-40 h-48 lg:w-52 lg:h-64 rounded-md text-center py-5 px-3 bg-white drop-shadow-lg"
           >
-            <h2 class="font-bold mb-3">Ibu May</h2>
+            <h2 class="font-bold mb-3">Budi Setiawan</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. A,
-              quasi.
+              "Paket wisata yang ditawarkan relatif murah dengan pilihan destinasi yang terbaik"
             </p>
           </div>
         </div>

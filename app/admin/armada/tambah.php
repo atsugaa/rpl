@@ -13,10 +13,11 @@
                 <h1 class="text-xl font-bold mb-5">Tambah Armada</h1>
                 <form action="tambah.php" method="POST" enctype="multipart/form-data">
                     <?php
-                        $inc = BASEPATH . '/assets/inc/admin/armada/armada.inc';
+                        $inc = BASEPATH . '/assets/inc/admin/armada/add.inc';
                         require BASEPATH . '/assets/inc/admin/armada/validate.inc';
                         $errors = array();
                         $table = 'kendaraan';
+                        $id = $_SESSION['id'];
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
