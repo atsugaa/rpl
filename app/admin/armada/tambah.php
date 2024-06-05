@@ -6,6 +6,7 @@
         header("Location: ../index.php");
         exit();
     }
+    $title = "Armada";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +24,6 @@
                         $inc = BASEPATH . '/assets/inc/admin/armada/add.inc';
                         require BASEPATH . '/assets/inc/admin/armada/validate.inc';
                         $errors = array();
-                        $id = $_SESSION['id'];
                         if (isset($_POST['submit'])) {
                             validornot($errors, [$_POST, $_FILES]);
                             if ($errors) {
@@ -31,7 +31,11 @@
                             } else {
                                 if (tambahArmada([$_POST, $_FILES])) {
                                     echo "<h1>Tambah armada berhasil !</h1>";
-                                    header('Location: index.php');
+                                    echo "<script>
+                                            setTimeout(function(){
+                                                window.location.href = 'index.php';
+                                            }, 1);
+                                          </script>";
                                 } else {
                                     echo "<h1>Gagal menambah armada.</h1>";
                                 }

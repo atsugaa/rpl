@@ -3,6 +3,7 @@
     $title = "home";
     require('../base.php');
     require("../database.php");
+    setExpireStatus();
 ?>
 <!DOCTYPE html>
 <html lang="en">

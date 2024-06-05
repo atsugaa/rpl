@@ -65,7 +65,6 @@
         </td>
         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
             <ul class="w-24 list-disc">
-
                 <?php
             $dests = explode(',', $armada["DESKRIPSI_KENDARAAN"]);
             foreach ($dests as $dest) {

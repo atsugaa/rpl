@@ -17,16 +17,8 @@
     } else {
         header("location: index.php");
     }
-?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Admin - Edit Armada</title>
-    </head>
-    <body>
-        <?php include("../../../assets/inc/admin/layouts/header.php"); ?>
+    $title = "Armada";
+    include("../../../assets/inc/admin/layouts/header.php"); ?>
             <div  class="w-full my-4 max-w-lg mx-auto">
                 <h1 class="text-xl font-bold mb-5">Edit Armada</h1>
                 <form action="edit.php" method="POST" enctype="multipart/form-data">

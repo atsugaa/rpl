@@ -211,6 +211,24 @@
 		return true;
 	}
 
+	function checkSpecArmadaStatus($id, $start, $end) {
+		$start = new DateTime($start);
+		$end = new DateTime($end);
+		$statement = DB->prepare("SELECT * FROM penyewaan");
+		$statement->execute();
+		foreach ($statement as $row) {
+			$sewa = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$selesai = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$selesai->modify("+".$row['DURASI_PENYEWAAN']." day");
+			if ($row['ID_KENDARAAN'] == $id && $row['STATUS_PENYEWAAN'] != 'EXPIRED') {
+				if ($start <= $selesai || $end >= $sewa) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	function setExpireStatus() {
 		$now = new DateTime(date('Y-m-d H:i:s'));
 		$sewas = getTableData('penyewaan');
@@ -1008,6 +1026,4 @@
             echo $err->getMessage();
         }
 	}
-
-	setExpireStatus();
 ?>
