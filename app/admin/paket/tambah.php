@@ -1,28 +1,12 @@
 <?php
-require_once('../../base.php');
-require_once('../../database.php');
-session_start();
-if (!isset($_SESSION['admin'])) {
-    header("Location: ../index.php");
-    exit();
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
-    require BASEPATH . '/assets/inc/admin/paket/validate.inc';
-
-    validornot($errors, [$_POST, $_FILES]);
-
-    if (empty($errors)) {
-        if (tambahPaket([$_POST, $_FILES])) {
-            echo "<h1>Tambah Paket berhasil!</h1>";
-            header('Location: index.php');
-            exit();
-        } else {
-            echo "<h1>Tambah Paket gagal!</h1>";
-        }
+    require_once('../../base.php');
+    require_once('../../database.php');
+    session_start();
+    if (!isset($_SESSION['admin'])) {
+        header("Location: ../index.php");
+        exit();
     }
-}
+    $title = "Paket Wisata";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +21,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="text-xl font-bold mb-5">Tambah Paket</h1>
             <form action="tambah.php" method="POST" enctype="multipart/form-data">
                 <?php
-                $inc = BASEPATH . '/assets/inc/admin/paket/add.inc';
-                include $inc;
+                    $inc = BASEPATH . '/assets/inc/admin/paket/add.inc';
+                    $errors = array();
+                    require BASEPATH . '/assets/inc/admin/paket/validate.inc';
+                    if (isset($_POST['submit'])) {
+                        validornot($errors, [$_POST, $_FILES]);
+                        if ($errors) {
+                            include $inc;
+                        } else {
+                            if (tambahPaket([$_POST, $_FILES])) {
+                                echo "<h1>Tambah paket berhasil !</h1>";
+                                echo "<script>
+                                        setTimeout(function(){
+                                            window.location.href = 'index.php';
+                                        }, 1);
+                                      </script>";
+                            } else {
+                                echo "<h1>Gagal paket armada.</h1>";
+                            }
+                        }
+                    } else {
+                        include $inc;
+                    }
                 ?>
                 <div class="form-field">
                     

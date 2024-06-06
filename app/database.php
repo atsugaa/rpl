@@ -98,7 +98,7 @@
 	
 		if (move_uploaded_file($gambar["tmp_name"], $target_file)) {
 			// Tambahkan data ke database
-			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_SEWA, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
+			$sql = "INSERT INTO kendaraan (ID_KENDARAAN, NAMA_KENDARAAN, HARGA_KENDARAAN, DESKRIPSI_KENDARAAN, GAMBAR_KENDARAAN) 
 					VALUES ('$id', '$nama', '$harga', '$deskripsi', '".$gambar["name"]."')";
 			
 			if (executeQuery($sql)) {
@@ -205,6 +205,24 @@
 			$end->modify("+".$row['DURASI_PENYEWAAN']." day");
 			if ($row['ID_KENDARAAN'] == $id && $row['STATUS_PENYEWAAN'] != 'EXPIRED') {
 				if ($now >= $sewa && $now <= $end) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	function checkSpecArmadaStatus($id, $start, $end) {
+		$start = new DateTime($start);
+		$end = new DateTime($end);
+		$statement = DB->prepare("SELECT * FROM penyewaan");
+		$statement->execute();
+		foreach ($statement as $row) {
+			$sewa = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$selesai = new DateTime($row['TANGGAL_PENYEWAAN'].' 23:59:59');
+			$selesai->modify("+".$row['DURASI_PENYEWAAN']." day");
+			if ($row['ID_KENDARAAN'] == $id && $row['STATUS_PENYEWAAN'] != 'EXPIRED') {
+				if ($end >= $sewa && $start <= $selesai) {
 					return false;
 				}
 			}
@@ -1009,6 +1027,4 @@
             echo $err->getMessage();
         }
 	}
-
-	setExpireStatus();
 ?>

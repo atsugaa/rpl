@@ -34,16 +34,17 @@
             </p>
             <form
                 target="_blank"
-                method=""
+                method="get"
                 class="flex flex-col md:flex-row gap-6 bg-white p-6 md:py-1 md:px-4 rounded-xl w-full lg:rounded-full text-left md:items-center"
             >
-                <label for="" class="font-bold">Tanggal Pergi</label>
-                <input class="text-sm border-0" type="date" name="" id="" />
-                <label for="" class="font-bold">Tanggal Pulang</label>
-                <input class="text-sm border-0" type="date" name="" id="" />
+                <label for="start" class="font-bold">Tanggal Pergi</label>
+                <input class="text-sm border-0" type="date" name="start" id="start" />
+                <label for="end" class="font-bold">Tanggal Pulang</label>
+                <input class="text-sm border-0" type="date" name="end" id="end" />
                 <input
                 class="bg-blue-600 text-white p-2 md:px-3 md:p-1 rounded-md"
                 type="submit"
+                name="submit"
                 value="cek"
                 />
             </form>
@@ -66,7 +67,18 @@
               <h2 class="text-2xl font-bold"> <?= ucwords($armada["NAMA_KENDARAAN"]) ?></h2>
               <p><?= "Rp " . number_format($armada["HARGA_KENDARAAN"], 0, ',', '.'); ?></p>
             </div>
-            <?php if (checkArmadaStatus($armada['ID_KENDARAAN'])) { ?>
+            <?php if (isset($_GET['submit'])) {
+                if (checkSpecArmadaStatus($armada['ID_KENDARAAN'], $_GET['start'], $_GET['end'])) { ?>
+                    <a href="<?=BASEURL?>/app/user/armada/sewa.php?id=<?=$armada['ID_KENDARAAN']?>" class="bg-blue-600 py-2 px-3 rounded-xl text-white"
+                       >Pesan</a
+                    >
+                <?php } else { ?>
+                <button href="" class="bg-blue-600 py-2 px-3 rounded-xl text-white" disabled
+                   >Armada Tidak Tersedia</button
+                >
+            <?php }
+            } else {
+                if (checkArmadaStatus($armada['ID_KENDARAAN'])) { ?>
                 <a href="<?=BASEURL?>/app/user/armada/sewa.php?id=<?=$armada['ID_KENDARAAN']?>" class="bg-blue-600 py-2 px-3 rounded-xl text-white"
                    >Pesan</a
                 >
@@ -74,7 +86,8 @@
                 <button href="" class="bg-blue-600 py-2 px-3 rounded-xl text-white" disabled
                    >Armada Tidak Tersedia</button
                 >
-            <?php } ?>
+            <?php }
+            } ?>
           </div>
         </div>
         <div class="text-gray-600">

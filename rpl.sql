@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2024 at 06:24 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Waktu pembuatan: 05 Jun 2024 pada 16.53
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kendaraan`
+-- Struktur dari tabel `kendaraan`
 --
 
 CREATE TABLE `kendaraan` (
@@ -34,21 +34,21 @@ CREATE TABLE `kendaraan` (
   `DESKRIPSI_KENDARAAN` varchar(256) NOT NULL,
   `GAMBAR_KENDARAAN` varchar(256) NOT NULL,
   `STATUS_KENDARAAN` tinyint(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kendaraan`
+-- Dumping data untuk tabel `kendaraan`
 --
 
 INSERT INTO `kendaraan` (`ID_KENDARAAN`, `NAMA_KENDARAAN`, `HARGA_KENDARAAN`, `DESKRIPSI_KENDARAAN`, `GAMBAR_KENDARAAN`, `STATUS_KENDARAAN`) VALUES
-('K0001', 'KUDA LUMPING', 230000, 'OKE, MANTAP, MANUK', 'test.jpg', 1),
-('K0002', 'KERETA JAWA', 290000, 'MANUK, MANTAP, MANUK', 'test2.jpg', 0),
-('K0003', 'BUS NEGRO', 300000, 'MANUK, MANUK, MANUK', '1684484016077.jpg', 1);
+('6660779a', 'Bus Jb3', 3500000, '50 seat formasi tempat duduk (2-2) dan 5 seat di barisan paling belakang, Toilet Air Conditioner, Reclining Seat, LCD TV - DVD - Stop Kontak - Microphone untuk karaoke, Bantal, Cool Box (opsional), Safety Feature (Palu pemecah kaca dan pemadam api, serta e', 'Untitled design (7).png', 1),
+('K0001', 'Hiace', 1800000, 'Desain Interior Yang Modern, Kabin Bagasi, LED TV, Sliding Door, Kursi Lipat Belakang', 'Untitled design (6).png', 1),
+('K0002', 'Big Bus 48', 3500000, 'Tempat Duduk 48, Bagasi 6, Transmisi Manual, Bahan Bakar Diesel, Asuransi Kendaraan, Ada Pengemudi', 'Untitled design (5).png', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paket`
+-- Struktur dari tabel `paket`
 --
 
 CREATE TABLE `paket` (
@@ -61,21 +61,22 @@ CREATE TABLE `paket` (
   `TANGGAL_PAKET` datetime NOT NULL,
   `DESKRIPSI_PAKET` varchar(256) NOT NULL,
   `GAMBAR_PAKET` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `paket`
+-- Dumping data untuk tabel `paket`
 --
 
 INSERT INTO `paket` (`ID_PAKET`, `NAMA_PAKET`, `DESTINASI_PAKET`, `HARGA_PAKET`, `JEMPUT_PAKET`, `KAPASITAS_PAKET`, `TANGGAL_PAKET`, `DESKRIPSI_PAKET`, `GAMBAR_PAKET`) VALUES
-('P0001', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-16 20:58:54', 'MANTAP', 'test.jpg'),
-('P0002', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-15 08:00:00', 'MANTAP', 'test2.jpg'),
-('P0003', 'KELILING RUMAH', 'HALAMAN, DAPUR, RUANG TAMU, KAMAR MANDI', 400000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-05-18 21:00:00', 'MANTAP', '1683506901841.jpg');
+('665cb1e2', 'Jelajah Bromo ', 'Gunung Bromo, Air Terjun Madakaripura, Bukit Teletubbies Bromo, Gunung Widodaren', 300000, 'Depan masjid cheng ho', 100, '2024-06-29 00:54:00', 'Nikmati keindahan alam dan petualangan seru di Gunung Bromo dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP', 'image 33.png'),
+('P0001', 'Jogja Ceria', 'CANDI BOROBUDUR, MALIOBORO, HEHA SKY VIEW, HEHA OCEAN VIEW, OBELIX HILLS', 500000, 'LAMONGAN, TIKUNG, MANTUP', 150, '2024-05-16 20:58:54', 'Nikmati kekayaan budaya dan keindahan alam Yogyakarta dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!', 'image 33 (1).png'),
+('P0002', 'Hiling Bersama dengan Hilal', 'Florawisata San Terra de Lafonte, Jatim Park 1, Alun-Alun Kota Malang, Kampung Warna-Warni Jodipan, Batu Night Spectacular', 400000, 'LAMONGAN, TIKUNG, MANTUP', 80, '2024-07-26 08:00:00', 'Nikmati keindahan alam, budaya, dan kuliner Malang dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP Bandara/', '61c03a03c4068.jpg'),
+('P0003', 'Jelajah Kota Sejuta Umat Pasurua', 'Jendela Langit, Air Terjun Coban Binangun, Cimory Dairyland Prigen, Kebun Raya Purwodadi, ', 300000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-08-07 21:00:00', 'Nikmati keindahan alam dan kearifan lokal Pasuruan dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP Surabaya', 'b44de8fc1789eebb07781449541c17fb.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemesanan`
+-- Struktur dari tabel `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
@@ -88,22 +89,22 @@ CREATE TABLE `pemesanan` (
   `TANGGAL_PEMESANAN` date NOT NULL DEFAULT current_timestamp(),
   `TITIK_JEMPUT_PEMESANAN` varchar(256) NOT NULL,
   `STATUS_PEMESANAN` varchar(16) NOT NULL DEFAULT 'BELUM'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pemesanan`
+-- Dumping data untuk tabel `pemesanan`
 --
 
 INSERT INTO `pemesanan` (`ID_PEMESANAN`, `ID_PAKET`, `ID_USER`, `CATATAN_PESANAN`, `JUMLAH_PESANAN`, `TOTAL_HARGA`, `TANGGAL_PEMESANAN`, `TITIK_JEMPUT_PEMESANAN`, `STATUS_PEMESANAN`) VALUES
 ('TP000001', 'P0002', 'febrianu', 'okkk', 6, 2400000, '2024-05-21', 'LAMONGAN', 'SUDAH'),
 ('TP000002', 'P0003', 'febrianu', 'okkkkkkkkkkkkkkkk', 2, 800000, '2024-05-21', ' MANTUP', 'SUDAH'),
-('TP000003', 'P0003', 'febrianu', 'uuuuuuuuuu', 1, 400000, '2024-05-21', 'LAMONGAN', 'BELUM'),
+('TP000003', 'P0003', 'febrianu', 'uuuuuuuuuu', 1, 400000, '2024-05-21', 'LAMONGAN', 'EXPIRED'),
 ('TP000004', 'P0003', 'febrianu', 'jjjjjjjjjjj', 2, 800000, '2024-05-21', ' TIKUNG', 'SUDAH');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penyewaan`
+-- Struktur dari tabel `penyewaan`
 --
 
 CREATE TABLE `penyewaan` (
@@ -116,10 +117,10 @@ CREATE TABLE `penyewaan` (
   `TOTAL_HARGA` bigint(20) NOT NULL,
   `TANGGAL_PENYEWAAN` date NOT NULL DEFAULT current_timestamp(),
   `STATUS_PENYEWAAN` varchar(16) NOT NULL DEFAULT 'BELUM'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `penyewaan`
+-- Dumping data untuk tabel `penyewaan`
 --
 
 INSERT INTO `penyewaan` (`ID_PENYEWAAN`, `ID_KENDARAAN`, `ID_USER`, `TITIK_JEMPUT_PENYEWAAN`, `CATATAN_PENYEWAAN`, `DURASI_PENYEWAAN`, `TOTAL_HARGA`, `TANGGAL_PENYEWAAN`, `STATUS_PENYEWAAN`) VALUES
@@ -128,7 +129,7 @@ INSERT INTO `penyewaan` (`ID_PENYEWAAN`, `ID_KENDARAAN`, `ID_USER`, `TITIK_JEMPU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -138,35 +139,36 @@ CREATE TABLE `user` (
   `TELEPON_USER` varchar(13) NOT NULL,
   `PASSWORD_USER` varchar(256) NOT NULL,
   `IS_ADMIN` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`ID_USER`, `NAMA_USER`, `ALAMAT_USER`, `TELEPON_USER`, `PASSWORD_USER`, `IS_ADMIN`) VALUES
+('admin21', 'admin', 'Asrama Trunojoyo Madura', '082338842217', '91e83d5263772b44b861d96d4c6821dd071152594d1f52e1029bb800757c066f', 1),
 ('atsuga17', 'kntlo', 'Jotosanur', '089530456940', '4872129a12084829b5fb66ac1b350284f52dc3e75b39da6d8f973b2c0013246e', NULL),
 ('febrianu', 'febrianu', 'febrianu', '06969696969', '91e83d5263772b44b861d96d4c6821dd071152594d1f52e1029bb800757c066f', NULL),
-('petarunx', 'Admin', 'Admin', '08945364829', '4872129a12084829b5fb66ac1b350284f52dc3e75b39da6d8f973b2c0013246e', 1);
+('petarunx', 'Admin Hilal', 'Dusun Klagen, Ds Tawar, Kec Gondang', '08945364829', '4872129a12084829b5fb66ac1b350284f52dc3e75b39da6d8f973b2c0013246e', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kendaraan`
+-- Indeks untuk tabel `kendaraan`
 --
 ALTER TABLE `kendaraan`
   ADD PRIMARY KEY (`ID_KENDARAAN`);
 
 --
--- Indexes for table `paket`
+-- Indeks untuk tabel `paket`
 --
 ALTER TABLE `paket`
   ADD PRIMARY KEY (`ID_PAKET`);
 
 --
--- Indexes for table `pemesanan`
+-- Indeks untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`ID_PEMESANAN`),
@@ -174,7 +176,7 @@ ALTER TABLE `pemesanan`
   ADD KEY `FK_MEMESAN` (`ID_USER`);
 
 --
--- Indexes for table `penyewaan`
+-- Indeks untuk tabel `penyewaan`
 --
 ALTER TABLE `penyewaan`
   ADD PRIMARY KEY (`ID_PENYEWAAN`),
@@ -182,24 +184,24 @@ ALTER TABLE `penyewaan`
   ADD KEY `FK_MELAKUKAN` (`ID_USER`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID_USER`);
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `pemesanan`
+-- Ketidakleluasaan untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD CONSTRAINT `FK_KE` FOREIGN KEY (`ID_PAKET`) REFERENCES `paket` (`ID_PAKET`),
   ADD CONSTRAINT `FK_MEMESAN` FOREIGN KEY (`ID_USER`) REFERENCES `user` (`ID_USER`);
 
 --
--- Constraints for table `penyewaan`
+-- Ketidakleluasaan untuk tabel `penyewaan`
 --
 ALTER TABLE `penyewaan`
   ADD CONSTRAINT `FK_DARI` FOREIGN KEY (`ID_KENDARAAN`) REFERENCES `kendaraan` (`ID_KENDARAAN`),

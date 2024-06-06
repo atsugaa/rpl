@@ -7,6 +7,7 @@
         header("Location: ../index.php");
         exit();
     }
+    $title = "Armada";
 ?>
         <?php include("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
@@ -25,7 +26,11 @@
                             } else {
                                 if (tambahArmada([$_POST, $_FILES])) {
                                     echo "<h1>Tambah armada berhasil !</h1>";
-                                    header('Location: index.php');
+                                    echo "<script>
+                                            setTimeout(function(){
+                                                window.location.href = 'index.php';
+                                            }, 1);
+                                          </script>";
                                 } else {
                                     echo "<h1>Gagal menambah armada.</h1>";
                                 }
