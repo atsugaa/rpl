@@ -64,9 +64,15 @@
         <p class="text-xs">
           <span class="text-xl font-bold"><?= "Rp " . number_format($packet["HARGA_PAKET"], 0, ',', '.'); ?></span> per-orang
         </p>
-        <button data-modal-target="static-modal<?=$flag?>" data-modal-toggle="static-modal<?=$flag?>" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-          Lihat Selengkapnya
-        </button>
+        <?php if ($packet["KAPASITAS_PAKET"] > 0) { 
+          if (checkPaket($packet)) {?>
+            <button data-modal-target="static-modal<?=$flag?>" data-modal-toggle="static-modal<?=$flag?>" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Lihat Selengkapnya</button>
+          <?php } else { ?>
+            <button class="block text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600" type="button" disabled>Paket Tidak Tersedia</button>
+          <?php }
+        } else { ?>
+          <button class="block text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600" type="button" disabled>Paket Habis</button>
+        <?php } ?>
       </div>
 
           <!-- Modal toggle -->

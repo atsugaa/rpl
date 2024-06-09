@@ -211,6 +211,16 @@
 		return true;
 	}
 
+	function checkPaket($paket) {
+		$now = new DateTime(date('Y-m-d H:i:s'));
+		$start = new DateTime($paket['TANGGAL_PAKET']);
+		$start->modify("-3 day");
+		if ($now >= $start) {
+			return false;
+		}
+		return true;
+	}
+
 	function checkSpecArmadaStatus($id, $start, $end) {
 		$start = new DateTime($start);
 		$end = new DateTime($end);
