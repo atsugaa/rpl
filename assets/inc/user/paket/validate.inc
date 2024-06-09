@@ -11,6 +11,8 @@
         $sisa = $paket['KAPASITAS_PAKET'] - $post['jumlah'];
         if ($sisa < 0) {
             $errors['jumlah'] = '*Slot hanya tersisa '.$paket["KAPASITAS_PAKET"].' orang';
+        } else {
+            return true;
         }
     }
 ?>

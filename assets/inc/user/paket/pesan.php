@@ -6,7 +6,7 @@
     class="block mb-2 text-sm font-medium text-gray-900"
     >Tempat Penjemputan</label
   >
-  <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="titik">
+  <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="titik" required>
       <option value="" selected disabled>Pilih Titik Jemput</option>
       <?php
         $dests = explode(",", $paket["JEMPUT_PAKET"]);
