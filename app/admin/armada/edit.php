@@ -39,7 +39,11 @@
                             } else {
                                 editArmada([$_POST, $_FILES]);
                                 echo "<h1>Edit armada berhasil !</h1>";
-                                include $inc;
+                                 echo "<script>
+                                        setTimeout(function(){
+                                            window.location.href = 'index.php';
+                                        }, 1);
+                                      </script>";
                             }
                         } else {
                             include $inc;
