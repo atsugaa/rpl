@@ -1698,6 +1698,10 @@ h1 {
   width: 78vw;
 }
 
+.w-\[93vw\] {
+  width: 93vw;
+}
+
 .w-\[this-is\\\\\] {
   width: this-is\\;
 }
@@ -1719,16 +1723,20 @@ h1 {
   width: 100%;
 }
 
-.w-\[90vw\] {
-  width: 90vw;
+.w-\[93\%\] {
+  width: 93%;
 }
 
-.w-\[95vw\] {
-  width: 95vw;
+.w-\[95\%\] {
+  width: 95%;
 }
 
-.w-\[93vw\] {
-  width: 93vw;
+.w-\[94\%\] {
+  width: 94%;
+}
+
+.w-\[97\%\] {
+  width: 97%;
 }
 
 .min-w-full {
@@ -3324,6 +3332,11 @@ h1 {
   padding-bottom: 1.25rem;
 }
 
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -4591,6 +4604,10 @@ h1 {
     height: 50vh;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:w-40 {
     width: 10rem;
   }
@@ -4603,8 +4620,8 @@ h1 {
     width: auto;
   }
 
-  .md\:w-1\/2 {
-    width: 50%;
+  .md\:w-2\/3 {
+    width: 66.666667%;
   }
 
   .md\:max-w-lg {
@@ -4645,11 +4662,6 @@ h1 {
     border-width: 0px;
   }
 
-  .md\:bg-black {
-    --tw-bg-opacity: 1;
-    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-  }
-
   .md\:bg-transparent {
     background-color: transparent;
   }
@@ -4686,12 +4698,16 @@ h1 {
     padding: 7rem;
   }
 
+  .md\:p-32 {
+    padding: 8rem;
+  }
+
   .md\:p-5 {
     padding: 1.25rem;
   }
 
-  .md\:p-32 {
-    padding: 8rem;
+  .md\:p-16 {
+    padding: 4rem;
   }
 
   .md\:px-14 {
@@ -4702,6 +4718,11 @@ h1 {
   .md\:px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+
+  .md\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem;
   }
 
   .md\:px-4 {
@@ -4719,19 +4740,9 @@ h1 {
     padding-bottom: 3rem;
   }
 
-  .md\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-
   .md\:py-9 {
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
-  }
-
-  .md\:px-32 {
-    padding-left: 8rem;
-    padding-right: 8rem;
   }
 
   .md\:text-left {
@@ -4813,6 +4824,10 @@ h1 {
 
   .lg\:w-\[45\%\] {
     width: 45%;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:justify-center {

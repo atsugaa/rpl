@@ -31,9 +31,9 @@
     <header>
       <?php	include("../../../assets/inc/user/layouts/header.inc"); ?>
     </header>
-    <main class="flex justify-center p-16">
+    <main class="flex justify-center px-3 py-7 md:p-16">
       <div
-        class="w-[93vw] md:w-1/2 p-4 bg-white border border-gray-200 rounded-lg backdrop-blur-xl sm:p-6 md:p-14"
+        class="w-[97%] md:w-2/3 lg:w-1/2 p-4 bg-white border border-gray-200 rounded-lg backdrop-blur-xl md:p-14"
       >
         <h5 class="text-xl font-medium text-gray-900 text-center">
           From Reservasi
