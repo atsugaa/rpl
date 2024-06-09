@@ -1,7 +1,6 @@
 <?php
 require_once('../../base.php');
 require("../../database.php");
-require("../../base.php");
 connectDatabase();
 //header unduh file Excel
 header("Content-Type: application/vnd.ms-excel");
@@ -9,7 +8,6 @@ header("Content-Disposition: attachment; filename=laporan_armada.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
 
-global $connection;
 
 $query = "SELECT * FROM kendaraan";
 $hasil = mysqli_query($connection, $query);
