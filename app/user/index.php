@@ -43,26 +43,26 @@
           >
             <div class="overflow-hidden h-[290px] w-full">
               <img
-                src="<?=BASEURL?>/assets/img/63fdb9789cf09.jpg"
+                src="<?=BASEURL?>/assets/img/1.png "
                 class="hover:scale-125 duration-75"
                 alt=""
               />
             </div>
             <h2 class="font-bold m-2 lg:m-3">Sewa Armada</h2>
-          </div>
-        </a>
-        <a href="<?=BASEURL?>/app/user/paket/index.php">
-          <div
-            class="w-[280px] h-[190px] sm:w-[360px] sm:h-[250px] md:w-[37vw] md:h-[22vw] bg-blue-600 rounded-lg overflow-hidden flex items-center drop-shadow-xl flex-col my-3"
-          >
-            <div class="overflow-hidden h-[290px] w-full">
-              <img
-                src="<?=BASEURL?>/assets/img/1.png"
+            </div>
+            </a>
+            <a href="<?=BASEURL?>/app/user/paket/index.php">
+              <div
+              class="w-[280px] h-[190px] sm:w-[360px] sm:h-[250px] md:w-[37vw] md:h-[22vw] bg-blue-600 rounded-lg overflow-hidden flex items-center drop-shadow-xl flex-col my-3"
+              >
+              <div class="overflow-hidden h-[290px] w-full">
+                <img
+                src="<?=BASEURL?>/assets/img/63fdb9789cf09.jpg"
                 class="hover:scale-125 duration-75 "
                 alt=""
-              />
-            </div>
-            <h2 class="font-bold m-2 lg:m-3">Paket Wisata</h2>
+                />
+                </div>
+              <h2 class="font-bold m-2 lg:m-3">Paket Wisata</h2>
           </div>
         </a>
       </section>

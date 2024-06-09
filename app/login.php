@@ -32,7 +32,7 @@
         </h5>
         <h2 class="text-2xl text-bold">Masuk</h2>
         <p>
-          TIdak punya akun ?
+          Tidak punya akun ?
           <a href="user/register.php" class="text-blue-500">Daftar</a>
         </p>
 		<?php

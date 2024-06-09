@@ -9,6 +9,8 @@
 		} catch (PDOException $e) {
 			die($e->getMessage());
 		}
-	}
+	} 
 	return define("DB", connect('localhost', 'rpl', 'root', ''));
+
+	
 ?>

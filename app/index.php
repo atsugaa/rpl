@@ -7,7 +7,7 @@
 		header('location: user/index.php');
 		exit();
 	} else {
-		header('location: login.php');
+		header('location: user/index.php');
 		exit();
 	}
 ?>

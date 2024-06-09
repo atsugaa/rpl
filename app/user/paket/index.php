@@ -1,9 +1,9 @@
 <?php
     session_start();
-    if (!isset($_SESSION['user'])) {
-      header("Location: ../index.php");
-      exit();
-    }
+    // if (!isset($_SESSION['user'])) {
+    //   header("Location: ../index.php");
+    //   exit();
+    // }
     $title = "paket";
     require('../../base.php');
     require("../../database.php");

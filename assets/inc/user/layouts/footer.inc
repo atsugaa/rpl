@@ -10,7 +10,7 @@
       Hubungi kami
     </h1>
     <div class="flex flex-col gap-7 items-center md:items-start max-w-md">
-      <a href="">
+      <a href="https://maps.app.goo.gl/ovsE9waxg5EroJpW9">
         <div class="flex gap-3 items-center">
           <img src="<?=BASEURL?>/assets/img/location.png" alt="" />
           <h3>
@@ -18,7 +18,7 @@
           </h3>
         </div>
       </a>
-      <a href="">
+      <a href="https://www.instagram.com/pt.hilaltrans">
         <div class="flex gap-2 items-center">
           <img
             src="<?=BASEURL?>/assets/img/teenyicons_instagram-solid.png"
@@ -27,13 +27,13 @@
           <h3>pt.hilaltrans</h3>
         </div>
       </a>
-      <a href="">
+      <a href="https://www.youtube.com/channel/UCBzceAFPTSryLec-6jKYZhw">
         <div class="flex gap-2 items-center">
           <img src="<?=BASEURL?>/assets/img/simple-icons_youtube.png" alt="" />
           <h3>Puma. Tour</h3>
         </div>
       </a>
-      <a href="https://wa.me/6288803528451?text=pesen%20kontol%20satu">
+      <a href="https://wa.me/6288803528451">
         <div class="flex gap-2 items-center">
           <img src="<?=BASEURL?>/assets/img/formkit_whatsapp.png" alt="" />
           <h3>088803528451</h3>
