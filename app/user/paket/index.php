@@ -29,7 +29,7 @@
         class="w-full flex justify-center items-center h-[35vh] md:h-[40vh] lg:h-[47vh] bg-no-repeat bg-cover bg-center"
       >
         <div
-          class="flex flex-col justify-center gap-5 bg-red w-full h-full px-6  md:px-32"
+          class="flex flex-col justify-center gap-5 bg-red w-full h-full px-5 md:px-32"
         >
           <h2 class="text-white font-bold text-2xl">Paket Wisata</h2>
           <p class="text-white text-sm">

@@ -34,7 +34,7 @@
     </header>
     <main class="flex justify-center p-16">
       <div
-        class="w-1/2 p-4 bg-white border border-gray-200 rounded-lg backdrop-blur-xl sm:p-6 md:p-14"
+        class="w-[93vw] md:w-1/2 p-4 bg-white border border-gray-200 rounded-lg backdrop-blur-xl sm:p-6 md:p-14"
       >
         <h5 class="text-xl font-medium text-gray-900 text-center">
           From Reservasi
@@ -60,5 +60,6 @@
         </form>
       </div>
     </main>
+    <?php include("../../../assets/inc/user/layouts/footer.inc");?>
   </body>
 </html>

@@ -65,7 +65,7 @@ if ($bayar[0]['STATUS_PEMESANAN'] == 'BELUM') {
     </head>
     <body>
         <?php include("../../../assets/inc/user/layouts/header.inc") ?>
-        <main class="flex justify-center gap-11 flex-wrap items-center p-32 bg-slate-50">
+        <main class="flex justify-center gap-11 flex-wrap items-center p-5 md:p-32 bg-slate-50">
             <div class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm">
                 <?php if ($bayar[0]['STATUS_PEMESANAN'] != 'SUDAH')  { ?>
                     <h4 id="timer"></h4>
