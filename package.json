@@ -9,11 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "autoprefixer": "^10.4.19",
-=======
     "chart.js": "^4.4.3",
->>>>>>> 43c08312c754bceac3eed7bf7f97e245ca870ae8
     "flowbite": "^2.3.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3"

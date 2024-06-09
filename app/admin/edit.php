@@ -8,8 +8,8 @@
 	}
 	include(BASEPATH."/assets/inc/admin/layouts/header.php");?>
 	<div class="content_edit">
-		<div class="form-container">
-			<h1>Edit Profil</h1>
+		<div class="w-full my-4 max-w-lg mx-auto">
+			<h1 class="text-xl font-bold mb-5">Edit Profil</h1>
 			<form action="edit.php" method="POST">
 				<?php
 					$table = 'user';

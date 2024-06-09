@@ -45,14 +45,14 @@
       <div
         class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm"
       >
-        <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center">
-          <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none" />
+        <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center items-center w-full">
+          <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none " />
         </div>
         <div class="flex justify-between items-center font-bold">
-          <h2 class="text-xl">  <?= ucwords($packet["NAMA_PAKET"]) ?></h2>
+          <h2 class="text-xl w-40">  <?= ucwords($packet["NAMA_PAKET"]) ?></h2>
           <h3>Sisa <?= $packet["KAPASITAS_PAKET"] ?> Orang</h3>
         </div>
-        <p class="text-gray-500">24 Jam</p>
+        <p class="text-gray-500">3 Hari 2 Malam</p>
         <?php
           $destinasis = explode(",", $packet["DESTINASI_PAKET"]);
           foreach ($destinasis as $destinasi) { ?>
