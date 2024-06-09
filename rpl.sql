@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2024 pada 16.53
+-- Waktu pembuatan: 09 Jun 2024 pada 10.40
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -41,7 +41,9 @@ CREATE TABLE `kendaraan` (
 --
 
 INSERT INTO `kendaraan` (`ID_KENDARAAN`, `NAMA_KENDARAAN`, `HARGA_KENDARAAN`, `DESKRIPSI_KENDARAAN`, `GAMBAR_KENDARAAN`, `STATUS_KENDARAAN`) VALUES
-('6660779a', 'Bus Jb3', 3500000, '50 seat formasi tempat duduk (2-2) dan 5 seat di barisan paling belakang, Toilet Air Conditioner, Reclining Seat, LCD TV - DVD - Stop Kontak - Microphone untuk karaoke, Bantal, Cool Box (opsional), Safety Feature (Palu pemecah kaca dan pemadam api, serta e', 'Untitled design (7).png', 1),
+('6660779a', 'Jet Bus 3 Voyager Mining Specs', 3500000, '50 seat formasi tempat duduk (2-2) dan 5 seat di barisan paling belakang, Toilet Air Conditioner, Reclining Seat, LCD TV - DVD - Stop Kontak - Microphone untuk karaoke, Bantal, Cool Box (opsional), Safety Feature (Palu pemecah kaca dan pemadam api, serta e', 'bus new.png', 1),
+('66655ed1', 'Jet Bus SDD 5', 4500000, 'Body dari Baja Galvanis, Panjang : 13500mm, Lebar : 2500mm, Tinggi : 4150mm, Pintu Darurat, Pintu Keluar Darurat, Sunroof Palu Keamanan, Alat Pemada Api, DVD Player, Sub Woofer + Spaker, 71 - 75 kursi', 'Untitled design (7).png', 1),
+('666561cd', 'Jet Bus 3+ MC', 2000000, '17 - 20 seats, Panjang : 6470 / 5150 mm, Lebar : 1835mm, Tinggi : 2508mm, Body dari Baja Galvanis, Pintu Darurat, Palu Keamanan, Alat Pemadam Api, TV LED hingga 20', 'elf mahal.png', 1),
 ('K0001', 'Hiace', 1800000, 'Desain Interior Yang Modern, Kabin Bagasi, LED TV, Sliding Door, Kursi Lipat Belakang', 'Untitled design (6).png', 1),
 ('K0002', 'Big Bus 48', 3500000, 'Tempat Duduk 48, Bagasi 6, Transmisi Manual, Bahan Bakar Diesel, Asuransi Kendaraan, Ada Pengemudi', 'Untitled design (5).png', 0);
 
@@ -71,7 +73,7 @@ INSERT INTO `paket` (`ID_PAKET`, `NAMA_PAKET`, `DESTINASI_PAKET`, `HARGA_PAKET`,
 ('665cb1e2', 'Jelajah Bromo ', 'Gunung Bromo, Air Terjun Madakaripura, Bukit Teletubbies Bromo, Gunung Widodaren', 300000, 'Depan masjid cheng ho', 100, '2024-06-29 00:54:00', 'Nikmati keindahan alam dan petualangan seru di Gunung Bromo dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP', 'image 33.png'),
 ('P0001', 'Jogja Ceria', 'CANDI BOROBUDUR, MALIOBORO, HEHA SKY VIEW, HEHA OCEAN VIEW, OBELIX HILLS', 500000, 'LAMONGAN, TIKUNG, MANTUP', 150, '2024-05-16 20:58:54', 'Nikmati kekayaan budaya dan keindahan alam Yogyakarta dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!', 'image 33 (1).png'),
 ('P0002', 'Hiling Bersama dengan Hilal', 'Florawisata San Terra de Lafonte, Jatim Park 1, Alun-Alun Kota Malang, Kampung Warna-Warni Jodipan, Batu Night Spectacular', 400000, 'LAMONGAN, TIKUNG, MANTUP', 80, '2024-07-26 08:00:00', 'Nikmati keindahan alam, budaya, dan kuliner Malang dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP Bandara/', '61c03a03c4068.jpg'),
-('P0003', 'Jelajah Kota Sejuta Umat Pasurua', 'Jendela Langit, Air Terjun Coban Binangun, Cimory Dairyland Prigen, Kebun Raya Purwodadi, ', 300000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-08-07 21:00:00', 'Nikmati keindahan alam dan kearifan lokal Pasuruan dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP Surabaya', 'b44de8fc1789eebb07781449541c17fb.jpg');
+('P0003', 'Jelajah Kota Sejuta Umat', 'Jendela Langit, Air Terjun Coban Binangun, Cimory Dairyland Prigen, Kebun Raya Purwodadi', 300000, 'LAMONGAN, TIKUNG, MANTUP', 40, '2024-08-07 21:00:00', 'Nikmati keindahan alam dan kearifan lokal Pasuruan dengan paket wisata kami yang dirancang untuk memberikan pengalaman tak terlupakan. Hubungi kami sekarang untuk informasi lebih lanjut dan pemesanan!\r\n\r\nFasilitas sebagai berikut : Transportasi PP Surabaya', 'b44de8fc1789eebb07781449541c17fb.jpg');
 
 -- --------------------------------------------------------
 
