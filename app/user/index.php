@@ -57,8 +57,8 @@
           >
             <div class="overflow-hidden h-[290px] w-full">
               <img
-                src="<?=BASEURL?>/assets/img/63fdb9789cf09.jpg"
-                class="hover:scale-125 duration-75"
+                src="<?=BASEURL?>/assets/img/1.png"
+                class="hover:scale-125 duration-75 "
                 alt=""
               />
             </div>
@@ -72,7 +72,7 @@
         class="w-full py-20 flex flex-col md:flex-row justify-evenly items-center"
       >
         <div class="w-80 mb-12">
-          <img src="<?=BASEURL?>/assets/img/63fdb9789cf09.jpg" alt="" />
+          <img src="<?=BASEURL?>/assets/img/jogja1.jpg" alt=""  class="h-auto w-200 rounded-lg hover:scale-125 duration-75"/>
         </div>
         <div class="w-[78vw] md:w-[37vw]">
           <h2 class="text-2xl md:text-4xl font-extrabold mb-4 text-center">

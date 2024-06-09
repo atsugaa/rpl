@@ -45,8 +45,8 @@
       <div
         class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm h-max"
       >
-        <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center">
-          <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none" />
+        <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center items-center ">
+          <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none " />
         </div>
         <div class="flex justify-between items-center font-bold">
           <h2 class="text-xl w-40" >  <?= ucwords($packet["NAMA_PAKET"]) ?></h2>
@@ -64,9 +64,15 @@
         <p class="text-xs">
           <span class="text-xl font-bold"><?= "Rp " . number_format($packet["HARGA_PAKET"], 0, ',', '.'); ?></span> per-orang
         </p>
-        <button data-modal-target="static-modal<?=$flag?>" data-modal-toggle="static-modal<?=$flag?>" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-          Lihat Selengkapnya
-        </button>
+        <?php if ($packet["KAPASITAS_PAKET"] > 0) { 
+          if (checkPaket($packet)) {?>
+            <button data-modal-target="static-modal<?=$flag?>" data-modal-toggle="static-modal<?=$flag?>" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Lihat Selengkapnya</button>
+          <?php } else { ?>
+            <button class="block text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600" type="button" disabled>Paket Tidak Tersedia</button>
+          <?php }
+        } else { ?>
+          <button class="block text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600" type="button" disabled>Paket Habis</button>
+        <?php } ?>
       </div>
 
           <!-- Modal toggle -->

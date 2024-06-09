@@ -43,10 +43,16 @@
           <?php
           $table = 'pemesanan';
           $id = $_SESSION['id'];
+          $errors = array();
           $inc = BASEPATH.'/assets/inc/user/paket/pesan.php';
+          require BASEPATH .'/assets/inc/user/paket/validate.inc';
           if (isset($_POST['submit'])) {
-            pesan($_POST, $id, $paket['ID_PAKET']);
-            echo "<h6>pemesanan berhasil, silahkan lakukan pembayaran di menu riwayat pemesanan</h6>";
+            if (validornot($errors, $_POST, $paket)) {
+              pesan($_POST, $id, $paket['ID_PAKET']);
+              echo "<h6>pemesanan berhasil, silahkan lakukan pembayaran di menu riwayat pemesanan</h6>";
+            } else {
+              include $inc;
+            }
           } else {
               include $inc;
           }

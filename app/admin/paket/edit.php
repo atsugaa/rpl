@@ -17,6 +17,7 @@
     } else {
         header('Location: index.php');
     }
+    $title = "Paket Wisata";
 ?>
         <?php require_once("../../../assets/inc/admin/layouts/header.php"); ?>
             <div class="w-full my-4 max-w-lg mx-auto">
@@ -39,7 +40,11 @@
                             } else {
                                 editPaket([$_POST, $_FILES]);
                                 echo "<h1>Edit Paket berhasil !</h1>";
-                                include $inc;
+                                 echo "<script>
+                                        setTimeout(function(){
+                                            window.location.href = 'index.php';
+                                        }, 1);
+                                      </script>";
                             }
                         } else {
                             include $inc;
