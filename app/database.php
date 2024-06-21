@@ -248,7 +248,8 @@
 			if ($sewa['STATUS_PENYEWAAN'] == 'BELUM') {
 				$exp = new DateTime($sewa['TANGGAL_PENYEWAAN'].' 23:59:59');
 				$exp->modify('+1 day');
-				if ($now > $exp) {
+				$armada = getAllData('kendaraan', $sewa['ID_KENDARAAN']);
+				if ($now > $exp ) {
 					try{
 						$statement = DB->prepare("UPDATE penyewaan SET STATUS_PENYEWAAN = 'EXPIRED' where ID_PENYEWAAN = :id");
 						$statement->bindValue(':id',$sewa['ID_PENYEWAAN']);
@@ -265,7 +266,8 @@
 			if ($pesan['STATUS_PEMESANAN'] == 'BELUM') {
 				$exp = new DateTime($pesan['TANGGAL_PEMESANAN'].' 23:59:59');
 				$exp->modify('+1 day');
-				if ($now > $exp) {
+				$paket = getAllData('paket', $pesan['ID_PAKET']);
+				if ($now > $exp || $paket['KAPASITAS_PAKET'] < 1 || $pesan['JUMLAH_PESANAN'] > $paket['KAPASITAS_PAKET']) {
 					try{
 						$statement = DB->prepare("UPDATE pemesanan SET STATUS_PEMESANAN = 'EXPIRED' where ID_PEMESANAN = :id");
 						$statement->bindValue(':id',$pesan['ID_PEMESANAN']);

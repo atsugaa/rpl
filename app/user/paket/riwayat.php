@@ -6,6 +6,7 @@
 	}
     require('../../base.php');
     require("../../database.php");
+    setExpireStatus();
     $riwayats = getUserData('pemesanan', 'paket', $_SESSION['id']);
     if (isset($_POST['orderId'])) {
 	    updateOrderStatus($_POST['orderId'], $_POST['paketId'], $_POST['qty'],'pemesanan');
