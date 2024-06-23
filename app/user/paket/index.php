@@ -52,7 +52,7 @@
         </div>
       </div>
   </header>
-  <main class="flex justify-center items-center gap-11 flex-wrap p-32 pb-16">
+  <main class="flex justify-center  gap-11 flex-wrap p-28 pb-16">
     <?php foreach ($packets as $packet) : ?>
       <div
         class="p-3 rounded-md bg-white drop-shadow-lg  items-stretch justify-between flex flex-col gap-4 text-sm"

@@ -50,10 +50,10 @@
                 method="get"
                 class="flex flex-col md:flex-row gap-6 bg-white p-6 md:py-1 md:px-4 rounded-xl w-full lg:rounded-full text-left md:items-center"
             >
-                <label for="start" class="font-bold">Tanggal Pergi</label>
-                <input class="text-sm border-0" type="date" name="start" id="start" />
-                <label for="end" class="font-bold">Tanggal Pulang</label>
-                <input class="text-sm border-0" type="date" name="end" id="end" />
+                <label for="start" class="font-bold text-black">Tanggal Pergi</label>
+                <input class="text-sm border-0 text-black" type="date" name="start" id="start" />
+                <label for="end" class="font-bold text-black">Tanggal Pulang</label>
+                <input class="text-sm border-0 text-black" type="date" name="end" id="end" />
                 <input
                 class="bg-blue-600 text-white p-2 md:px-3 md:p-1 rounded-md"
                 type="submit"
@@ -65,11 +65,11 @@
         </div>
     </header>
 	<main
-      class="flex justify-center items-center gap-11 flex-wrap p-32 pb-16"
+      class="flex justify-center gap-11 flex-wrap p-0 md:p-28 pb-16"
     >
     <?php foreach ($armadas as $armada) : ?>
         <div
-        class="flex flex-col gap-5 p-4 rounded-xl w-10/12 bg-white drop-shadow-lg sm:w-[400px]"
+        class="flex flex-col gap-5 p-4 justify-stretch rounded-xl w-10/12 bg-white drop-shadow-lg sm:w-[400px]"
       >
         <div class="flex flex-col md:flex-row md:items-center gap-6">
           <img src="<?= BASEURL; ?>/assets/img/armada/<?= $armada['GAMBAR_KENDARAAN'] ?>" class="wfull md:w-40" alt="" />
