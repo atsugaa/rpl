@@ -14,15 +14,6 @@
 <div class="container mx-auto p-4">
     <div class="flex flex-col  sm:flex-row items-center justify-start mb-4">
         <a href="excel.php" class="m-6 sm:mb-0 sm:mr-4 inline-block px-4 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 whitespace-nowrap">Export Excel</a>
-        <select name="cars" id="cars" class="m-6 border-white border-none inline-block px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 whitespace-nowrap mr-3">
-                <option value="volvo">Add Filter</option>
-                <option value="saab">Sering beli</option>
-                <option value="mercedes">Belum Bayar</option>
-                <option value="audi">Sudah Bayar</option>
-        </select>
-        <div class="m-6 relative flex items-center">
-            <input type="text" name="search" placeholder="Cari Pemesanan" autocomplete="off" aria-label="Cari Pemesanan" class="w-full sm:w-64 pr-3 pl-10 py-2 placeholder-gray-500 text-black rounded-xl ring-gray-300 focus:ring-gray-500 focus:ring-2">
-        </div>
     </div>
 
     <div class="overflow-x-auto w-full">

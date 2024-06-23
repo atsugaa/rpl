@@ -14,22 +14,14 @@
     <div class="flex flex-col  sm:flex-row items-center justify-start mb-4">
         <a href="excel.php" class="m-6 sm:mb-0 sm:mr-4 inline-block px-4 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 whitespace-nowrap">Export Excel</a>
         <a href="tambah.php" class="m-6 w-fit inline-block items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Tambah Armada</a>
-        <select name="cars" id="cars" class="m-6 border-blue-500 border-none inline-block px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 whitespace-nowrap mr-3">
-                <option value="volvo">Add Filter</option>
-                <option value="saab">Sering beli</option>
-                <option value="mercedes">Belum Bayar</option>
-                <option value="audi">Sudah Bayar</option>
-        </select>
-        <div class="relative flex items-center m-6">
-            <input type="text" name="search" placeholder="Cari Pemesanan" autocomplete="off" aria-label="Cari Pemesanan" class="w-full sm:w-64 pr-3 pl-10 py-2 placeholder-gray-500 text-black rounded-xl ring-gray-300 focus:ring-gray-500 focus:ring-2">
-        </div>
     </div>
     <div class="overflow-x-scroll">
 
 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-        <th scope="col" class="px-16 py-3">Gambar
+        <th scope="col" class="px-16 py-3">
+            Gambar
         </th>
         <th scope="col" class="px-6 py-3">
             ID
