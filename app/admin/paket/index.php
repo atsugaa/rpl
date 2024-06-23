@@ -23,9 +23,9 @@
         include("../../../assets/inc/admin/layouts/header.php");
         $flag = 1;
     ?>
-    <div class="flex flex-col  sm:flex-row items-center justify-start mb-4">
-        <a href="excel.php" class="m-6 sm:mb-0 sm:mr-4 inline-block px-4 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 whitespace-nowrap">Export Excel</a>
-        <a href="tambah.php" class="m-6 w-fit inline-block items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Tambah Armada</a>
+       <div class="flex flex-col  sm:flex-row items-center justify-start mb-4">
+        <a href="excel.php" class="mb-2 md:m-6   mr-4 inline-block px-4 py-2 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300">Export Excel</a>
+        <a href="tambah.php" class="md:m-6 mr-4 inline-block px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Tambah Paket</a>
     </div>
     <div class="overflow-x-scroll">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

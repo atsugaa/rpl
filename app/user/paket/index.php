@@ -40,10 +40,10 @@
         </div>
       </div>
   </header>
-  <main class="flex justify-center gap-11 flex-wrap items-center p-32 bg-slate-50">
+  <main class="flex justify-center gap-11 flex-wrap p-32 bg-slate-50">
     <?php foreach ($packets as $packet) : ?>
       <div
-        class="p-3 rounded-md bg-white drop-shadow-lg flex flex-col gap-4 text-sm h-max"
+        class="p-3 rounded-md bg-white drop-shadow-lg  items-stretch justify-between flex flex-col gap-4 text-sm"
       >
         <div class="w-72 h-52 rounded-md overflow-hidden flex justify-center items-center ">
           <img src="<?= BASEURL; ?>/assets/img/paket/<?= $packet['GAMBAR_PAKET'] ?>" alt="paket" class="h-52 max-w-none " />
