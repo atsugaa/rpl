@@ -166,6 +166,19 @@
 		}
 	}
 
+	function getTableDataPagination($table, $page) {
+		try{
+			$limit = 10;
+			$offset = ($page - 1) * $limit;
+			$statement = DB->prepare("SELECT * FROM $table LIMIT $limit OFFSET $offset");
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+
 	function getPendapatan(){
 		try {
 		   $statement = DB->prepare("SELECT sum(TOTAL_HARGA) as harga FROM pemesanan");

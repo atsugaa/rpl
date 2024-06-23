@@ -3,7 +3,19 @@
     require('../../base.php');
     require("../../database.php");
     $title = "Paket Wisata";
-    $packets = getTableData('paket');
+    $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $packets = getTableDataPagination($currentPage);
+    if (count(getTableData('paket')) > 10) {
+        $totalPages = round(count(getAllPemesanan()) / 5);
+    } else {
+        $totalPages = 1;
+    }
+
+    if ($currentPage < 1) {
+        $currentPage = 1;
+    } elseif ($currentPage > $totalPages && $totalPages > 0) {
+        $currentPage = $totalPages;
+    }
     if (isset($_GET['pkt'])) {
         delete($_GET['pkt'], 'paket');
         header('location: index.php');
