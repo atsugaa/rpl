@@ -25,7 +25,7 @@
 		$flag = 1;
     ?>
           <div
-          style="background-image:url(<?=BASEURL?>/assets/img/5ce21808a9751d0fd0564f61814d36ba.jpg)"
+          style="background-image:url(<?=BASEURL?>/assets/img/5ce21808a9751d0fd0564f61814d36ba.webp)"
         class="w-full flex justify-center items-center h-[35vh] md:h-[40vh] lg:h-[47vh] bg-no-repeat bg-cover bg-center"
       >
         <div

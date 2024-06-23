@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "image-bromo":
-          "url(http://localhost:8080/rpl/assets/img/bromo_login.jpg)",
+          "url(http://localhost:8080/rpl/assets/img/bromo_login.webp)",
       },
     },
   },

@@ -41,7 +41,7 @@
           class="flex py-10 w-full justify-center items-center flex-col border-b-[1px] border-gray-400 border-solid"
         >
           <div class="rounded-full h-20 w-20 overflow-hidden bg-white">
-            <img src="<?=BASEURL?>/assets/img/man.png" alt="" />
+            <img src="<?=BASEURL?>/assets/img/man.webp" alt="" />
           </div>
           <h2>Hi Admin 1</h2>
         </div>

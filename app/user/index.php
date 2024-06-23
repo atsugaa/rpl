@@ -17,7 +17,7 @@
     <header class="inline">
         <?php include("../../assets/inc/user/layouts/header.inc") ?>
         <div
-        style="background-image:url(<?=BASEURL?>/assets/img/unsplash_ujjgyvWwMZU.jpg)"
+        style="background-image:url(<?=BASEURL?>/assets/img/unsplash_ujjgyvWwMZU.webp)"
         class="w-full h-[40vh] md:h-[50vh] lg:h-[70vh] bg-no-repeat bg-cover bg-center bg-fixed"
       >
         <div
@@ -43,7 +43,7 @@
           >
             <div class="overflow-hidden h-[290px] w-full">
               <img
-                src="<?=BASEURL?>/assets/img/1.png "
+                src="<?=BASEURL?>/assets/img/1.webp "
                 class="hover:scale-125 duration-75"
                 alt=""
               />
@@ -57,7 +57,7 @@
               >
               <div class="overflow-hidden h-[290px] w-full">
                 <img
-                src="<?=BASEURL?>/assets/img/63fdb9789cf09.jpg"
+                src="<?=BASEURL?>/assets/img/63fdb9789cf09.webp"
                 class="hover:scale-125 duration-75 "
                 alt=""
                 />
@@ -72,7 +72,7 @@
         class="w-full py-20 flex flex-col md:flex-row justify-evenly items-center"
       >
         <div class="w-80 mb-12">
-          <img src="<?=BASEURL?>/assets/img/jogja1.jpg" alt=""  class="h-auto w-200 rounded-lg hover:scale-125 duration-75"/>
+          <img src="<?=BASEURL?>/assets/img/jogja1.webp" alt=""  class="h-auto w-200 rounded-lg hover:scale-125 duration-75"/>
         </div>
         <div class="w-[78vw] md:w-[37vw]">
           <h2 class="text-2xl md:text-4xl font-extrabold mb-4 text-center">

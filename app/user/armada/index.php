@@ -21,7 +21,7 @@
         ?>
         <!-- ========================================== START JUMBOTRON ================================================ -->
         <div
-        style="background-image: url(<?=BASEURL?>/assets/img/unsplash_ujjgyvWwMZU.jpg)"
+        style="background-image: url(<?=BASEURL?>/assets/img/unsplash_ujjgyvWwMZU.webp)"
             class="w-full flex justify-center items-center px-5 py-16 md:h-[50vh] lg:h-[70vh] bg-no-repeat bg-cover bg-center bg-fixed"
         >
             <div

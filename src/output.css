@@ -1698,6 +1698,10 @@ h1 {
   width: 78vw;
 }
 
+.w-\[97\%\] {
+  width: 97%;
+}
+
 .w-\[this-is\\\\\] {
   width: this-is\\;
 }
@@ -3195,10 +3199,6 @@ h1 {
   padding: 3rem;
 }
 
-.p-16 {
-  padding: 4rem;
-}
-
 .p-2 {
   padding: 0.5rem;
 }
@@ -3310,6 +3310,11 @@ h1 {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }
 
 .pb-10 {
@@ -4579,6 +4584,10 @@ h1 {
     height: 50vh;
   }
 
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+
   .md\:w-40 {
     width: 10rem;
   }
@@ -4633,13 +4642,8 @@ h1 {
     background-color: transparent;
   }
 
-  .md\:bg-black {
-    --tw-bg-opacity: 1;
-    background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-  }
-
   .md\:bg-image-bromo {
-    background-image: url(http://localhost:8080/rpl/assets/img/bromo_login.jpg);
+    background-image: url(http://localhost:8080/rpl/assets/img/bromo_login.webp);
   }
 
   .md\:bg-cover {
@@ -4662,12 +4666,20 @@ h1 {
     padding: 3.5rem;
   }
 
+  .md\:p-16 {
+    padding: 4rem;
+  }
+
   .md\:p-20 {
     padding: 5rem;
   }
 
   .md\:p-28 {
     padding: 7rem;
+  }
+
+  .md\:p-32 {
+    padding: 8rem;
   }
 
   .md\:p-5 {
@@ -4707,11 +4719,6 @@ h1 {
   .md\:py-9 {
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
-  }
-
-  .md\:py-32 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
   }
 
   .md\:text-left {
@@ -4785,6 +4792,10 @@ h1 {
 
   .lg\:h-full {
     height: 100%;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:w-52 {

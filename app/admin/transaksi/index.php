@@ -46,7 +46,7 @@
                     <tr>
                         <td class="p-3 text-sm tracking-wide text-left">
                             <div class="flex items-center">
-                                <img class="rounded-full w-10 h-10" src="<?=BASEURL?>/assets/img/man.png" alt="icon man">
+                                <img class="rounded-full w-10 h-10" src="<?=BASEURL?>/assets/img/man.webp" alt="icon man">
                                 <p class="ml-3"><?= $transaction['ID_USER'] ?></p>
                             </div>
                         </td>

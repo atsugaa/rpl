@@ -70,7 +70,7 @@
           </p>
         </div>
         <img
-          src="<?= BASEURL ?>/assets/img/ilustrasi_login.png"
+          src="<?= BASEURL ?>/assets/img/ilustrasi_login.webp"
           alt=""
         />
       </div>
