@@ -7,7 +7,19 @@
     $title = "paket";
     require('../../base.php');
     require("../../database.php");
-    $packets = getTableData('paket');
+    $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $packets = getTableDataPagination('paket', $currentPage);
+    if (count(getTableData('paket')) > 10) {
+        $totalPages = round(count(getTableData('paket')) / 10);
+    } else {
+        $totalPages = 1;
+    }
+
+    if ($currentPage < 1) {
+        $currentPage = 1;
+    } elseif ($currentPage > $totalPages && $totalPages > 0) {
+        $currentPage = $totalPages;
+    }
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +52,7 @@
         </div>
       </div>
   </header>
-  <main class="flex justify-center gap-11 flex-wrap p-32 bg-slate-50">
+  <main class="flex justify-center items-center gap-11 flex-wrap p-32 pb-16">
     <?php foreach ($packets as $packet) : ?>
       <div
         class="p-3 rounded-md bg-white drop-shadow-lg  items-stretch justify-between flex flex-col gap-4 text-sm"
@@ -117,6 +129,27 @@
         <?php $flag+=1;
     endforeach; ?>
 	</main>
+<nav class="w-full flex justify-center mb-8">
+    <ul class="inline-flex -space-x-px text-base h-10">
+        <li>
+            <a href="?page=<?= $currentPage - 1 ?>" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-whiteg <?= $currentPage <= 1 ? 'pointer-events-none' : '' ?>">Previous</a>
+        </li>
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <?php if ($i == $currentPage): ?>
+                <li>
+                    <span class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"><?= $i ?></span>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="?page=<?= $i ?>" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"><?= $i ?></a>
+                </li>
+            <?php endif; ?>
+        <?php endfor; ?>
+        <li>
+            <a href="?page=<?= $currentPage + 1 ?>" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white <?= $currentPage >= $totalPages ? 'pointer-events-none' : '' ?>">Next</a>
+        </li>
+    </ul>
+</nav>
 	<?php include("../../../assets/inc/user/layouts/footer.inc");?>
   <script src="<?=BASEURL?>/node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>

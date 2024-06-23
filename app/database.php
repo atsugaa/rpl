@@ -166,6 +166,34 @@
 		}
 	}
 
+	function getTableDataPagination($table, $page) {
+		try{
+			$limit = 10;
+			$offset = ($page - 1) * $limit;
+			$statement = DB->prepare("SELECT * FROM $table LIMIT $limit OFFSET $offset");
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+
+	function getUserDataPagination($table, $table2, $id, $page) {
+		$name = strtoupper($table2);
+		try{
+			$limit = 10;
+			$offset = ($page - 1) * $limit;
+			$statement = DB->prepare("SELECT * FROM $table, $table2 where ID_USER = :id AND $table.ID_$name = $table2.ID_$name LIMIT $limit OFFSET $offset");
+			$statement->bindValue(':id',$id);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch(PDOException $err){
+			echo $err->getMessage();
+		}
+	}
+
 	function getPendapatan(){
 		try {
 		   $statement = DB->prepare("SELECT sum(TOTAL_HARGA) as harga FROM pemesanan");
