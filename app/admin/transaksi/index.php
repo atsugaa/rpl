@@ -12,7 +12,7 @@
     $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $transactions = getTableDataPagination('pemesanan', $currentPage);
     if (count(getAllPemesanan()) > 10) {
-        $totalPages = round(count(getAllPemesanan()) / 5);
+        $totalPages = round(count(getAllPemesanan()) / 10);
     } else {
         $totalPages = 1;
     }
@@ -32,8 +32,8 @@
 
     <div class="overflow-x-auto w-full">
         <div class="min-w-full flex justify-center">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead class="bg-gray-50">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th class="p-4 text-sm font-semibold tracking-wide text-center">Nama</th>
                         <th class="p-3 text-sm font-semibold tracking-wide text-center">Id Pemesan</th>
