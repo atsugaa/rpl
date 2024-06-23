@@ -87,7 +87,9 @@
               <span class="flex-1 ms-3 whitespace-nowrap">Pemesanan</span>
               <span
                 class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
-                >Pro</span
+                ><?php
+                  echo count(getAllPemesanan());
+                ?></span
               >
             </a>
           </li>
@@ -110,7 +112,9 @@
               <span class="flex-1 ms-3 whitespace-nowrap">Armada</span>
               <span
                 class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-white dark:text-blue-300"
-                >3</span
+                ><?php
+                  echo count(getTableData('kendaraan'));
+                ?></span
               >
             </a>
           </li>
@@ -131,6 +135,12 @@
                 />
               </svg>
               <span class="flex-1 ms-3 whitespace-nowrap">Paket Wisata</span>
+              <span
+                class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-white dark:text-blue-300"
+                ><?php
+                  echo count(getTableData('paket'));
+                ?></span
+              >
             </a>
           </li>
           <li>
